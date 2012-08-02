@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="382" height="256"
+	keyUp="onKeyUp(event.keyCode)"
+	creationComplete=" focusManager.setFocus(eventNameTi)">
+	
+		
+	<mx:Script>
+		<![CDATA[
+			import codegen.generation.FlexGenerator;
+			import codegen.generation.FlexGenManager;
+			import codegen.generation.GeneratedFile;
+			import mx.managers.PopUpManager;
+									
+			private function onKeyUp(pCode:int):void
+			{
+				if(pCode==Keyboard.ENTER) create(); 
+			}
+			
+			override public function create():void
+			{
+				
+				if(eventNameTi.text=="") return ;
+				
+				var clientGenManager:FlexGenManager = genManager as FlexGenManager;
+				var generatedFile:GeneratedFile = clientGenManager.createEvent( eventNameTi.text, radiogroup1.selectedValue as String, qualifiedPropertyTi.text);
+				
+				setGeneratedFiles([generatedFile]);
+				
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Form left="0" right="0" top="0" height="252">
+		<mx:FormItem label="Event Name Prefix">
+			<mx:TextInput id="eventNameTi"/>
+		</mx:FormItem>
+		<mx:FormItem label="Resulting Class Name :">
+			<mx:Label text="{eventNameTi.text+'Event'}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Event Super Class">
+			<mx:RadioButtonGroup id="radiogroup1"/>
+			<mx:RadioButton label="CairngormEvent" groupName="radiogroup1" selected="true" 
+				value="com.adobe.cairngorm.control.CairngormEvent"/>
+			<mx:RadioButton label="Event" groupName="radiogroup1"
+				value="flash.events.Event"/>
+			<mx:RadioButton id="customRB" label="Custom" groupName="radiogroup1"
+				value="{customClassTi.text}"/>
+		</mx:FormItem>
+		<mx:FormItem enabled="{customRB.selected}" label="Custom Class (fully qualified)">
+			<mx:TextInput id="customClassTi"/>
+		</mx:FormItem>
+		<mx:FormItem>
+			<mx:CheckBox id="propertyCB" label="Create a public var"/>
+		</mx:FormItem>
+		<mx:FormItem enabled="{propertyCB.selected}" label="public var type">
+			<mx:TextInput id="qualifiedPropertyTi"/>
+		</mx:FormItem>
+	</mx:Form>
+<!--	
+		<mx:Button label="Cancel" click="PopUpManager.removePopUp(this);" 
+			icon="@Embed(source='../../../assets/cancel.png')" x="243" y="319"/>
+		<mx:Button label="Create"
+			click=" create()"  
+			icon="@Embed(source='../../../assets/accept.png')" x="332" y="319"/>
+-->	
+</OperationDialog>

@@ -1,0 +1,42 @@
+package *COMMANDPACKAGE*
+{
+	import org.puremvc.as3.interfaces.ICommand;
+	import org.puremvc.as3.interfaces.INotification;
+	import org.puremvc.as3.patterns.command.SimpleCommand;
+	import *MODELPACKAGE*.*;	
+	import *BUSINESSPACKAGE*.*;		
+	import *VOPACKAGE*.*;		
+	import mx.rpc.IResponder;
+	import mx.rpc.remoting.RemoteObject;
+	import mx.rpc.AsyncToken;
+	import mx.rpc.events.FaultEvent;
+	
+*IMPORTS*
+
+	public class *CMDNAME*Command *EXTSUPERCLASS* implements ICommand, IResponder
+	{
+		override public function execute(event:INotification):void
+		{
+			// cast
+			
+
+			var delegate : *SERVICENAME*Delegate = new *SERVICENAME*Delegate( this );
+			delegate.*METHODNAME*(*METHODARGS*);						
+			
+		}
+		
+		public function result(data:Object):void
+		{
+			var returnedData:*RETURNTYPE* = data.result as *RETURNTYPE*;
+			// Update Model here
+		}
+		
+		public function fault(event:Object):void
+		{
+			var faultEvt:FaultEvent = event as FaultEvent;
+			// Error Management goes here 
+			trace(faultEvt.fault.faultString);
+		}
+		
+	}
+}

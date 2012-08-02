@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*" xmlns:mx="http://www.adobe.com/2006/mxml" width="274" height="68">
+	<mx:Script>
+		<![CDATA[
+			import codegen.generation.GeneratedFile;
+			import codegen.generation.PureMVCGenManager;
+			
+			override public function create():void
+			{
+				var pmvcGemManager:PureMVCGenManager = genManager as PureMVCGenManager;
+				var file:GeneratedFile = pmvcGemManager.createMediator(viewTi.text);
+				setGeneratedFiles([file]);
+			}
+			
+		]]>
+	</mx:Script> 
+	<mx:Label x="10" y="10" text="View Name"/>
+	<mx:TextInput id="viewTi" x="83" y="8"/>
+</OperationDialog>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Image click="showAlert()" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	source="{ AssetManager.helpIcon}"
+	visible="{ENABLED}">
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.view.AssetManager;
+			import mx.controls.Alert;
+			
+			[Bindable]
+			public static var ENABLED:Boolean = false;
+			
+			private function showAlert():void
+			{
+				
+				Alert.show(toolTip, "Info");
+			}
+			
+		]]>
+	</mx:Script>
+</mx:Image>

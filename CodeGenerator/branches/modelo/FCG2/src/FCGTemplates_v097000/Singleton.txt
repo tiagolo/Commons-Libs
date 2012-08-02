@@ -1,0 +1,25 @@
+package *MAINPACKAGE* 
+{  
+            
+    public class *CLASSNAME*  
+    {  
+      
+        private static var instance:*CLASSNAME*;  
+  
+          
+          
+        public static function getInstance():*CLASSNAME*  
+        {  
+            if(instance==null)  instance = new *CLASSNAME*();  
+            return instance;  
+        }  
+  
+        public function *CLASSNAME*()  
+        {  
+              
+            if(instance!=null) throw new Error("Error: Singletons can only be instantiated via getInstance() method!");  
+            *CLASSNAME*.instance = this;  
+        }  
+          
+    }  
+}

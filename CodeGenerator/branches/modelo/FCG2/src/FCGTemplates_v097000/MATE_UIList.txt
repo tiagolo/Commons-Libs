@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+		 defaultButton="{btnBuscar}" creationComplete="txFiltro.setFocus()" show="txFiltro.setFocus()">
+
+	<mx:Script>
+		<![CDATA[
+			import com.hillelcoren.utils.KeyboardUtil;
+			import *EVENTSPACKAGE*.*VO*Event;
+			import *MODELPACKAGE*.*VO*;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]
+			public var *LC_VO*:*VO* = new *VO*();
+			
+			[Bindable]
+			public var lista:ArrayCollection = new ArrayCollection();
+			
+			protected function btnBuscar_clickHandler(event:MouseEvent):void
+			{
+				var *LC_VO*Event:*VO*Event = new *VO*Event(*VO*Event.FIND_ALL);
+				*LC_VO*Event.*LC_VO* = *LC_VO*;
+				//*LC_VO*Event.properties = [*PROPERTIES*];
+				dispatchEvent(*LC_VO*Event);
+			}
+			
+			protected function btnNovo_clickHandler(event:MouseEvent):void
+			{
+				var *LC_VO*Event:*VO*Event = new *VO*Event(*VO*Event.EDIT);
+				*LC_VO*Event.*LC_VO* = new *VO*();
+				dispatchEvent(*LC_VO*Event);
+			}
+			
+			protected function btnEditar_clickHandler(event:MouseEvent):void
+			{
+				var *LC_VO*Event:*VO*Event = new *VO*Event(*VO*Event.EDIT);
+				*LC_VO*Event.*LC_VO* = dg.selectedItem as *VO*;
+				dispatchEvent(*LC_VO*Event);
+			}
+			
+			protected function btnExcluir_clickHandler(event:MouseEvent):void
+			{
+				var *LC_VO*Event:*VO*Event = new *VO*Event(*VO*Event.REMOVE);
+				*LC_VO*Event.*LC_VO* = dg.selectedItem as *VO*;
+				dispatchEvent(*LC_VO*Event);
+			}
+			
+			override protected function keyUpHandler(event:KeyboardEvent):void
+			{
+				if(event.ctrlKey)
+				{
+					switch(KeyboardUtil.charCodeToChar(event.charCode).toLocaleLowerCase())
+					{
+						case 'n':
+							btnNovo_clickHandler(null)
+							break;
+						case 'e':
+							btnEditar_clickHandler(null);
+							break;
+					}	
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Form width="100%">
+		<mx:FormHeading label="Lista de *VO*"/>
+		<mx:FormItem label="*VO*" direction="horizontal">
+			<mx:TextInput id="txFiltro" width="400"/>
+			<mx:Button id="btnBuscar" label="Buscar" buttonMode="true" click="btnBuscar_clickHandler(event)"/>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:DataGrid id="dg" dataProvider="{lista}" width="100%" height="100%" 
+				 doubleClick="btnEditar_clickHandler(event)" doubleClickEnabled="true">
+		<mx:columns>
+*DGCOLUMNS*		</mx:columns>
+	</mx:DataGrid>
+	<mx:HBox verticalAlign="middle">
+		<mx:Button id="btnNovo" buttonMode="true" label="Novo" toolTip="Crtl + N" click="btnNovo_clickHandler(event)"/>
+		<mx:Button id="btnEditar" buttonMode="true" label="Editar" toolTip="Crtl + E" click="btnEditar_clickHandler(event)"/>
+		<mx:LinkButton id="btnExcluir" buttonMode="true" label="Remover" click="btnExcluir_clickHandler(event)"/>
+	</mx:HBox>
+</mx:VBox>

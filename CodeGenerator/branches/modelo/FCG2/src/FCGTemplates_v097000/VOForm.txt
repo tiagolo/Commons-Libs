@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" xmlns:vo="*VOPACKAGE*.*">
+
+	<mx:Metadata>
+		[Event(name="update*VO*", type="*EVENTSPACKAGE*.*VO*Event")]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import *EVENTSPACKAGE*.*VO*Event;
+			import *VOPACKAGE*.*VO*;
+			
+			[Bindable]
+			public var *LC_VO*:*VO*;
+			
+		]]>
+	</mx:Script>
+	
+	<vo:*VO* id="updated*VO*"
+*PROPERTIES*
+		/>
+
+	<mx:Form x="10" y="10" defaultButton="{saveBt}">
+
+*FORMITEMS*
+				
+		<mx:FormItem label="Save" id="saveBt">
+			<mx:Button label="Save" click=" dispatchEvent( new *VO*Event(*VO*Event.EVENT_UPDATE_*UP_VO*, updated*VO*))"/>
+		</mx:FormItem>
+	</mx:Form>
+	
+</mx:Canvas>

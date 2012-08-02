@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:NavigatorContent
+					xmlns:mx="http://www.adobe.com/2006/mxml"
+					xmlns:s="library://ns.adobe.com/flex/spark" xmlns:view="org.commnoslibs.report.view.*">
+
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+
+	<mx:Script>
+		<![CDATA[
+			import mx.core.IFlexDisplayObject;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+
+			import org.commnoslibs.report.events.ReportEvent;
+			import org.commnoslibs.report.models.Report;
+
+			//------------------------------------------------------------------------------
+			//
+			//   Attributos 
+			//
+			//------------------------------------------------------------------------------
+
+			//--------------------------------------
+			//   Property 
+			//--------------------------------------
+
+			[Bindable]
+			[Inject(source='reportManager.report',bind=true)]
+			public var report:Report;
+
+			//------------------------------------------------------------------------------
+			//
+			//   Metodos 
+			//
+			//------------------------------------------------------------------------------
+
+			//--------------------------------------
+			//   Function 
+			//--------------------------------------
+
+			protected function btnAdicionarRelatorio_clickHandler(event:MouseEvent):void
+			{
+				var popup:ReportUploadDialog = PopUpManager.createPopUp(parentApplication as DisplayObject,ReportUploadDialog,true) as ReportUploadDialog;
+				popup.addEventListener(CloseEvent.CLOSE,function(event:Event):void
+				{
+					dispatchEvent(new ReportEvent(ReportEvent.FIND_REPORTS));
+					PopUpManager.removePopUp(event.target as IFlexDisplayObject);
+				});
+				PopUpManager.centerPopUp(popup);
+			}
+
+			protected function btnAuditoria_clickHandler(event:MouseEvent):void
+			{
+				//manageViews(reportAuditView);
+			}
+
+			protected function btnBaixarRelatorio_clickHandler(event:MouseEvent):void
+			{
+				dispatchEvent(new ReportEvent(ReportEvent.DOWNLOAD));
+			}
+
+			protected function btnDicionarioDados_clickHandler(event:MouseEvent):void
+			{
+				var popup:DicionarioDadosDialog = PopUpManager.createPopUp(parentApplication as DisplayObject,DicionarioDadosDialog,true) as DicionarioDadosDialog;
+				PopUpManager.centerPopUp(popup);
+			}
+
+			protected function btnExcel_clickHandler(event:MouseEvent):void
+			{
+				reportScreen.btnExcel_clickHandler(event);
+			}
+			protected function btnCSV_clickHandler(event:MouseEvent):void
+			{
+				reportScreen.btnCSV_clickHandler(event);
+			}
+
+			protected function btnExcluirRelatorio_clickHandler(event:MouseEvent):void
+			{
+				var reportEvent:ReportEvent = new ReportEvent(ReportEvent.REMOVE);
+				reportEvent.report = report;
+
+				dispatchEvent(reportEvent);
+			}
+
+			protected function btnImageManager_clickHandler(event:MouseEvent):void
+			{
+				//manageViews(imageManagerView);
+			}
+
+
+			protected function btnPrint_clickHandler(event:MouseEvent):void
+			{
+				reportScreen.btnPrint_clickHandler(event);
+			}
+
+			protected function btnImprimir_clickHandler(event:MouseEvent):void
+			{
+				reportScreen.btnImprimir_clickHandler(event);
+			}
+
+			protected function childView_closeHandler(event:Event):void
+			{
+				//manageViews(reportView);
+			}
+		]]>
+	</mx:Script>
+
+	<mx:HDividedBox id="reportView" width="100%" paddingLeft="10" paddingRight="10"
+					top="70" bottom="80">
+		<view:NavigationMenu id="reportNavigation" width="250" height="100%"/>
+		<view:ReportScreen id="reportScreen" width="100%" height="100%"/>
+	</mx:HDividedBox>
+
+	<view:ImageManagerView id="imageManagerView" width="100%" height="100%"
+						   close="childView_closeHandler(event)"/>
+
+	<!--<view:ReportAuditView id="reportAuditView" width="100%" height="100%"
+						  close="childView_closeHandler(event)"/>-->
+
+	<s:HGroup>
+		<s:Button id="btnPrint"
+				  enabled="{ Boolean(reportScreen.report) }"
+				  styleName="Imprimir"
+				  toolTip="Enviar para impressora"
+				  click="btnPrint_clickHandler(event)"
+				  visible="false"
+				  buttonMode="true"/>
+		<s:Button id="btnImprimir"
+				  enabled="{ Boolean(reportScreen.report) }"
+				  styleName="Imprimir"
+				  toolTip="Gerar Relatório"
+				  click="btnImprimir_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnExcel"
+				  enabled="{ Boolean(reportScreen.report) }"
+				  styleName="ExportarExcel"
+				  toolTip="Exportar para Excel"
+				  click="btnExcel_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnCSV"
+				  enabled="{ Boolean(reportScreen.report) }"
+				  styleName="ExportarCSV"
+				  toolTip="Exportar para CSV"
+				  click="btnCSV_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button styleName="Divider" visible="{btnDicionarioDados.visible}"/>
+		<s:Button id="btnDicionarioDados"
+				  styleName="DicionarioDados"
+				  toolTip="Dicionário de dados"
+				  click="btnDicionarioDados_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button styleName="Divider" visible="{btnAdicionarRelatorio.visible ? true : btnBaixarRelatorio.visible ? true : btnExcluirRelatorio.visible}"/>
+		<s:Button id="btnAdicionarRelatorio"
+				  styleName="Upload"
+				  toolTip="Enviar relatório"
+				  click="btnAdicionarRelatorio_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnBaixarRelatorio"
+				  enabled="{ Boolean(reportScreen.report) }"
+				  styleName="Download"
+				  toolTip="Baixar relatório selecionado"
+				  click="btnBaixarRelatorio_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnExcluirRelatorio"
+				  enabled="{ Boolean(report) }"
+				  styleName="Excluir"
+				  toolTip="Excluir relatório"
+				  click="btnExcluirRelatorio_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button styleName="Divider" visible="{btnImageManager.visible}"/>
+		<s:Button id="btnImageManager"
+				  styleName="ImageManager"
+				  toolTip="Gerenciador de imagens"
+				  click="btnImageManager_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button styleName="Divider" visible="{btnAuditoria.visible}"/>
+		<s:Button id="btnAuditoria"
+				  styleName="Auditoria"
+				  toolTip="Auditoria de relatórios"
+				  click="btnAuditoria_clickHandler(event)"
+				  buttonMode="true"/>
+	</s:HGroup>
+</s:NavigatorContent>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<design version="2">
+
+	<namespaces>
+		<namespace prefix="cl" uri="http://www.commonsLibs.org/flex/cl" />
+	</namespaces>
+
+	<categories>
+		<category id="CommonsLibs"	label="CommonsLibs - Controls" defaultExpand="true"/>
+	</categories>
+
+	<components>
+		<component name="ViewStack"	displayName="ViewStack"	namespace="cl"	category="CommonsLibs" />
+		<component name="DataGrid"	displayName="DataGrid"	namespace="cl"	category="CommonsLibs" />
+	</components>
+
+</design>

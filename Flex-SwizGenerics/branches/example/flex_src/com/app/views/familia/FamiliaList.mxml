@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:NavigatorContent xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					xmlns:mx="library://ns.adobe.com/flex/mx">
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+
+	<fx:Metadata>
+		[Inject(source="familiaManager.dataProvider",destination="grid.dataProvider",bind=true)]
+	</fx:Metadata>
+
+	<fx:Script>
+		<![CDATA[
+			import com.app.events.FamiliaEvent;
+			import com.app.model.Familia;
+
+			[Bindable]
+			private var familia:Familia = new Familia();
+
+			protected function btnPesquisar_clickHandler(event:MouseEvent):void
+			{
+				var familiaEvent:FamiliaEvent = new FamiliaEvent(FamiliaEvent.FIND_ALL);
+				familiaEvent.familia = familia;
+				familiaEvent.properties = ["nome"];
+
+				dispatchEvent(familiaEvent);
+			}
+
+			protected function btnNovo_clickHandler(event:MouseEvent):void
+			{
+				var familiaEvent:FamiliaEvent = new FamiliaEvent(FamiliaEvent.EDIT);
+				familiaEvent.familia = new Familia();
+				dispatchEvent(familiaEvent);
+			}
+
+			protected function btnEditar_clickHandler(event:MouseEvent):void
+			{
+				var familiaEvent:FamiliaEvent = new FamiliaEvent(FamiliaEvent.EDIT);
+				familiaEvent.familia = grid.selectedItem as Familia;
+				dispatchEvent(familiaEvent);
+			}
+
+			protected function btnRemover_clickHandler(event:MouseEvent):void
+			{
+				var familiaEvent:FamiliaEvent = new FamiliaEvent(FamiliaEvent.REMOVE);
+				familiaEvent.familia = grid.selectedItem as Familia;
+				dispatchEvent(familiaEvent);
+
+			}
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+	</fx:Declarations>
+
+	<s:Form width="100%">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:FormItem label="Descrição" skinClass="spark.skins.spark.StackedFormItemSkin">
+			<s:TextInput id="txDescricao" text="@{familia.nome}" width="400"/>
+		</s:FormItem>
+		<s:FormItem skinClass="spark.skins.spark.StackedFormItemSkin">
+			<s:Button id="btnPesquisar" label="Pesquisar" click="btnPesquisar_clickHandler(event)"/>
+		</s:FormItem>
+	</s:Form>
+
+	<s:DataGrid id="grid" width="100%" height="100%">
+		<s:columns>
+			<s:ArrayList>
+				<s:GridColumn dataField="id" headerText="ID"/>
+				<s:GridColumn dataField="nome" headerText="Nome"/>
+			</s:ArrayList>
+		</s:columns>
+	</s:DataGrid>
+
+	<s:HGroup>
+		<s:Button id="btnNovo" label="Novo" buttonMode="true" click="btnNovo_clickHandler(event)"/>
+		<s:Button id="btnEditar" label="Editar" buttonMode="true" click="btnEditar_clickHandler(event)"/>
+		<mx:LinkButton id="btnRemover" label="Remover" buttonMode="true" click="btnRemover_clickHandler(event)"/> 
+	</s:HGroup>
+
+</s:NavigatorContent>

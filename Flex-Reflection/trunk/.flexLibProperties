@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="org.commonsLibs.reflection.Property"/>
+    <classEntry path="org.commonsLibs.reflection.Metadata"/>
+    <classEntry path="org.commonsLibs.reflection.Atributte"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

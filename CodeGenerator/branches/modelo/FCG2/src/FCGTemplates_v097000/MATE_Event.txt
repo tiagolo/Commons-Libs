@@ -1,0 +1,31 @@
+package *EVENTSPACKAGE*
+{
+	*IMPORTS*
+	import *MODELPACKAGE*.*VO*;
+
+	import flash.events.Event;
+	
+	public class *VO*Event extends *EVENT_SUPERCLASS*
+	{
+		public static const FIND_ALL:String		= "*UP_VO*_findAll";
+		public static const FIND_BY_ID:String	= "*UP_VO*_findById";
+		public static const SAVE:String			= "*UP_VO*_save";
+		public static const REMOVE:String		= "*UP_VO*_remove";
+		public static const EDIT:String			= "*UP_VO*_edit";
+		public static const STATE_CHANGE:String	= "*UP_VO*_stateChange";
+		
+		public var *LC_VO*:*VO*;
+		
+		public function *VO*Event (pType:String,bubbles:Boolean=true, cancelable:Boolean=false)
+		{
+			super(pType,bubbles,cancelable);
+		}
+		
+		override public function clone():Event
+		{
+			var event:*VO*Event = new *VO*Event(type,bubbles,cancelable);
+			event.*LC_VO* = *LC_VO*;
+			return event;
+		}
+	}
+}

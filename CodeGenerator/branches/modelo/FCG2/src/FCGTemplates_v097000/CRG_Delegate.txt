@@ -1,0 +1,25 @@
+package *BUSINESSPACKAGE*
+{
+	import com.adobe.cairngorm.business.ServiceLocator;	
+	import mx.rpc.IResponder;
+	import mx.rpc.events.FaultEvent;
+	import mx.rpc.events.ResultEvent;
+	import mx.rpc.AbstractOperation;    
+	import *VOPACKAGE*.*;
+    
+	public class *SERVICENAME*Delegate
+	{
+		private var responder : IResponder;
+		private var service : Object;
+		
+		public function *SERVICENAME*Delegate(responder : IResponder )
+		{
+			this.service = ServiceLocator.getInstance().getRemoteObject( "*SERVICENAME*" );
+			this.responder = responder;
+		}   
+
+*DELEGATEMETHODS*			
+
+	}
+
+}	

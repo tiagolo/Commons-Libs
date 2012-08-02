@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<componentPackage>
+
+	<component id="AlertManager"	class="org.commonsLibs.swiz.business.AlertManager"/>
+	<component id="GenericManager"	class="org.commonsLibs.swiz.business.GenericManager"/>
+	<component id="AlertEvent"		class="org.commonsLibs.swiz.events.AlertEvent"/>
+	<component id="GenericEvent"	class="org.commonsLibs.swiz.events.GenericEvent"/>
+	<component id="Param"			class="org.commonsLibs.swiz.model.Param"/>
+
+</componentPackage>

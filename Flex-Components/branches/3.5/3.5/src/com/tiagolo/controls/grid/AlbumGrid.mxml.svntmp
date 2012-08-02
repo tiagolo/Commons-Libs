@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Tile xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:interativa="com.interativa.dna.layout.modulos.interativa.*" paddingBottom="2">
+	<mx:Metadata>
+		[Event(name="itemDoubleClick", type="com.interativa.dna.grid.GridEvent")]
+	</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			import com.interativa.dna.layout.modulos.interativa.AlbumRender;
+			import mx.core.IFlexDisplayObject;
+			import mx.controls.CheckBox;
+			import mx.collections.ArrayCollection;
+			
+			public var selectedItems:ArrayCollection = new ArrayCollection();
+			private var selectedChildren:ArrayCollection = new ArrayCollection();
+			
+			[Bindable]
+			private var collection:Object;
+			
+			public function set dataProvider(value:Object):void
+			{
+				collection = value;
+			}
+			
+			public function get dataProvider():Object
+			{
+				return collection;
+			}
+			
+			public function set selectedItem(o:Object):void
+			{
+				selectedItems = new ArrayCollection();
+				selectedItems.addItem(o);
+			}
+			
+			public function get selectedItem():Object
+			{
+				return selectedItems.getItemAt(selectedItems.length - 1);
+			}
+			
+			private function edit(event:MouseEvent):void
+			{
+
+			}
+			
+			private function selectItem(event:Event):void
+			{
+				if(event.target is CheckBox)
+				{
+					CheckBox(event.target).invalidateProperties();
+				}
+				else
+				{
+					AlbumRender(event.target).selected = true;
+					selectedItem = event.target.data;
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:Repeater id="listRepeater" dataProvider="{collection}">
+		<interativa:AlbumRender dataProvider="{listRepeater.currentItem}" doubleClick="edit(event)" click="selectItem(event)"/>
+	</mx:Repeater>
+</mx:Tile>

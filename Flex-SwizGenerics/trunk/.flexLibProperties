@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="org.commonsLibs.swiz.business.abstract.IAbstractManager"/>
+    <classEntry path="org.commonsLibs.swiz.business.abstract.AbstractManager"/>
+    <classEntry path="org.commonsLibs.swiz.business.abstract.ISyncAbstractManager"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="manifest.xml" sourcePath="manifest.xml"/>
+    <resourceEntry destPath="design.xml" sourcePath="design.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="manifest.xml" namespace="http://www.commonslibs.org/flex/cl"/>
+  </namespaceManifests>
+</flexLibProperties>

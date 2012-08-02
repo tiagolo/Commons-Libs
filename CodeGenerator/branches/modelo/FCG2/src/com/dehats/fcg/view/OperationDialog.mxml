@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+
+	<mx:Metadata>
+		[Event(name="filesGenerated", type="events.FilesGeneratedEvent")]
+	</mx:Metadata>
+
+
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.events.FilesGeneratedEvent;
+			import codegen.generation.IGenManager;
+//			import codegen.events.FilesGeneratedEvent;
+
+			private var _genManager:IGenManager;
+			
+			[Bindable]
+			public function get genManager():IGenManager
+			{
+				return _genManager;
+			}
+			public function set genManager(pManager:IGenManager):void
+			{
+				_genManager = pManager;
+			}
+			
+			protected function setGeneratedFiles(pFiles:Array):void
+			{
+				dispatchEvent( new FilesGeneratedEvent(FilesGeneratedEvent.EVENT_FILESGENERATED, pFiles));	
+			}
+			
+			public function create():void
+			{
+				//
+			}
+			
+		]]>
+	</mx:Script>
+</mx:Canvas>	

@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>JasperReports</artifactId>
+	<packaging>jar</packaging>
+
+	<name>CommonsLibs-SpringHibernate</name>
+	<url>http://www.assembla.com/spaces/commonsLibs</url>
+
+	<parent>
+		<groupId>org.commonsLibs</groupId>
+		<artifactId>CommonsLibs</artifactId>
+		<version>1.6-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.commonsLibs</groupId>
+			<artifactId>SpringHibernate</artifactId>
+			<version>1.5-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.0</version>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<sourceDirectory>${basedir}/java_src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>${basedir}/java_resources</directory>
+			</resource>
+		</resources>
+	</build>
+
+</project>

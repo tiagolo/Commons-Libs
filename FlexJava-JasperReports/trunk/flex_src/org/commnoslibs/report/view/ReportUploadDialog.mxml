@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow width="480" paddingBottom="12" paddingLeft="12" paddingRight="12" paddingTop="12"
+				layout="vertical"
+				maxHeight="480"
+				keyUp="jasperUploadDialog_keyUpHandler(event)"
+				showCloseButton="true"
+				title="Upload de Relatórios"
+				xmlns:mx="http://www.adobe.com/2006/mxml" 
+				xmlns:s="library://ns.adobe.com/flex/spark" xmlns:business="org.commnoslibs.report.business.*">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+
+			//------------------------------------------------------------------------------
+			//
+			//   Attributos 
+			//
+			//------------------------------------------------------------------------------
+
+			//--------------------------------------
+			//   Property 
+			//--------------------------------------
+
+			[Bindable]
+			[Inject(source="reportManager.applicationList",bind=true)]
+			public var applicationList:Array;
+
+			[Bindable]
+			[Inject(source="reportManager.contextRoot",bind=true)]
+			public var contextRoot:String;
+
+			[Bindable]
+			[Inject(source="reportManager.userId",bind=true)]
+			public var userId:int;
+
+			//------------------------------------------------------------------------------
+			//
+			//   Metodos 
+			//
+			//------------------------------------------------------------------------------
+
+			//--------------------------------------
+			//   Function 
+			//--------------------------------------
+
+			protected function btnBrowseJasper_clickHandler(event:MouseEvent):void
+			{
+				uploadManager.browserJasper();
+			}
+
+			protected function btnBrowseJrxml_clickHandler(event:MouseEvent):void
+			{
+				uploadManager.browserJrxml();
+			}
+
+			protected function btnIncluirSubreport_clickHandler(event:MouseEvent):void
+			{
+				uploadManager.incluirSubreport();
+			}
+
+			protected function btnRemoverSubreport_clickHandler(event:MouseEvent):void
+			{
+				uploadManager.removerSubreport(dgSubreports.selectedIndices);
+			}
+
+			protected function btnUpload_clickHandler(event:MouseEvent):void
+			{
+				uploadManager.aplicacao = cbAplicacao.selectedLabel;
+				uploadManager.upload(validators);
+			}
+
+			protected function jasperUploadDialog_keyUpHandler(event:KeyboardEvent):void
+			{
+				if (event.keyCode == Keyboard.ESCAPE)
+				{
+					dispatchEvent(new CloseEvent(CloseEvent.CLOSE));
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<business:UploadManager id="uploadManager"
+							close="dispatchEvent(event)"
+							userId="{userId}" />
+
+	<mx:Array id="validators">
+		<mx:Validator source="{ txtJasper }"
+					  property="text"
+					  required="true"
+					  requiredFieldError="Campo Obrigatório"
+					  triggerEvent=""/>
+		<mx:Validator source="{ txtJrxml }"
+					  property="text"
+					  required="true"
+					  requiredFieldError="Campo Obrigatório"
+					  triggerEvent=""/>
+		<mx:NumberValidator source="{ cbAplicacao }"
+							lowerThanMinError="Selecione uma aplicação"
+							minValue="1"
+							property="selectedIndex"
+							required="true"
+							requiredFieldError="Selecione uma aplicação"
+							triggerEvent=""/>
+	</mx:Array>
+
+	<mx:Form width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+		<!--<containers:MVBloco title="Aplicação"/>-->
+		<mx:FormHeading label="Aplicação"/>
+		<mx:FormItem>
+			<mx:ComboBox id="cbAplicacao" name="Aplicação" width="250"
+						 dataProvider="{ [{data:'',label:'SELECIONE UMA APLICAÇÃO' }].concat(applicationList.slice(1))}"/>
+		</mx:FormItem>
+
+		<!--<containers:MVBloco title="Relatório"/>-->
+		<mx:FormHeading label="Relatório"/>
+		<mx:FormItem width="100%"
+					 direction="horizontal"
+					 label="Jasper">
+			<s:TextInput id="txtJasper" name="Jasper" width="100%" minWidth="250"
+						 text="{ uploadManager.reportUpload.jasperName }"
+						 editable="false"
+						 errorString="{ uploadManager.erroString }"/>
+			<s:Button id="btnBrowseJasper"
+					  styleName="Pesquisar"
+					  click="btnBrowseJasper_clickHandler(event)"/>
+		</mx:FormItem>
+		<mx:FormItem width="100%"
+					 direction="horizontal"
+					 label="Jrxml">
+			<s:TextInput id="txtJrxml" name="Jrxml" width="100%" minWidth="250"
+						 text="{ uploadManager.reportUpload.jrxmlName }"
+						 editable="false"
+						 errorString="{ uploadManager.erroString }"/>
+			<s:Button id="btnBrowseJrxml"
+					  styleName="Pesquisar"
+					  click="btnBrowseJrxml_clickHandler(event)"/>
+		</mx:FormItem>
+	</mx:Form>
+
+	<!--<containers:MVBloco id="blSubReport"
+						creationComplete="blSubReport.selecionarEstado(false)"
+						title="Subrelatórios">-->
+	<mx:FormHeading label="Sub-Relatórios"/>
+	<mx:DataGrid id="dgSubreports" width="100%" height="100%"
+				 allowMultipleSelection="true"
+				 dataProvider="{ uploadManager.listSubReports }"
+				 errorString="{ uploadManager.erroString }">
+		<mx:columns>
+			<mx:DataGridColumn dataField="jasperName" headerText="Jasper"/>
+			<mx:DataGridColumn dataField="jrxmlName" headerText="JRXML"/>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:HBox width="100%">
+		<s:Button styleName="Adicionar"
+				  click="btnIncluirSubreport_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button enabled="{ Boolean(dgSubreports.selectedItem) }"
+				  styleName="Remover"
+				  click="btnRemoverSubreport_clickHandler(event)"
+				  buttonMode="true"/>
+	</mx:HBox>
+	<!--</containers:MVBloco>-->
+
+	<mx:ControlBar>
+		<s:Button id="btnUpload"
+				  label="Upload"
+				  click="btnUpload_clickHandler(event)"/>
+		<mx:ProgressBar id="pgrBar" width="100%"
+						label="Enviando %3%"
+						labelPlacement="center"
+						mode="event"
+						source="{ uploadManager }"/>
+	</mx:ControlBar>
+</mx:TitleWindow>

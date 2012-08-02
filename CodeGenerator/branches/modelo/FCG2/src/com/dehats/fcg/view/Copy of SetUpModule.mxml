@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="290" height="172" 
+	creationComplete=" onCreationComplete()" 
+	xmlns:generation="codegen.generation.*" xmlns:view="com.dehats.fcg.view.*">
+	
+	<mx:Metadata>
+		[Event(name="confirm")]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.view.operation_dialogs.*;						
+			import codegen.generation.*; 
+
+			[Bindable]
+			public var genManager:IGenManager;
+						
+			public var operationList:Array;
+			
+			/*
+				This is where you define the available operations for each generator
+				(g_class : the IGenManager used )
+			*/ 			
+			[Bindable]
+			private var myConfig:Array = 
+			[
+			
+				{label:"Flex", g_class: FlexGenManager, operations:[ 
+				new OperationData(CreateEventDialog, "Create Event", "Creates an Event class, with various options."),
+				new OperationData(CreateSingletonDialog, "Create a Singleton", "Creates an empty singleton class."),
+				new OperationData(AddVODialog, "Import Value Object", "Lets you choose a server-side class file (a Value Object/ Data Transfer Object) and creates a corresponding AS3 class. Optionally, you can create a corresponding Event and a couple of views."),
+				new OperationData(AddServiceDialog, "Import Service", "Lets you choose a server-side class file and creates a corresponding RemoteObject and BusinessDelegate"),			
+				]},
+				
+				{label:"Flex + Cairngorm", g_class:  CairngormGenManager, operations:[ 
+				new OperationData(CreateEventDialog, "Create Event", "Creates an Event class, with various options."),
+				new OperationData(CreateSingletonDialog, "Create a Singleton", "Creates an empty singleton class."),
+				new OperationData(AddVODialog, "Import Value Object", "Lets you choose a server-side class file (a Value Object/ Data Transfer Object) and creates a corresponding AS3 class."),
+				new OperationData(AddServiceDialog, "Import Service", "Lets you choose a server-side class file and creates a corresponding RemoteObject, plus a BusinessDelegate and one Command per Service operation."),			
+				]},	
+	
+				{label:"Flex + PureMVC", g_class:  PureMVCGenManager, operations:[ 
+				new OperationData(CreateEventDialog, "Create Event", "Creates an Event class, with various options."),
+				new OperationData(CreateSingletonDialog, "Create a Singleton", "Creates an empty singleton class."),
+				new OperationData(AddVODialog, "Import Value Object", "Lets you choose a server-side class file (a Value Object/ Data Transfer Object) and creates a corresponding AS3 class."),
+				new OperationData(AddServiceDialog, "Import Service", "Lets you choose a server-side class file and creates a corresponding RemoteObject, plus a RemoteProxy and BusinessDelegate."),			
+				new OperationData(CreateMediatorDialog, "Create Mediator", "Creates a Mediator"),			
+				new OperationData(CreateProxyDialog, "Create Proxy", "Creates an empty Proxy"),						
+				]},	
+	
+				{label:"PHP", g_class:  PHPGenManager, operations:[ 
+				new OperationData(SQLToDAODialog, "Import SQL", "Creates PHP DAOs, VOs and Service from an SQL DataBase structure file."),
+				]},				
+			
+			];
+			
+			
+			private function onCreationComplete():void
+			{
+				focusManager.setFocus(packageTi);
+				
+				onChange(myConfig[0]);
+
+			}
+			
+					
+			private function onChange(pObj:Object):void
+			{				
+				
+				var GenManagerClass:Class = pObj.g_class;
+				
+				genManager = new GenManagerClass();
+				
+				operationList = pObj.operations;
+				
+			}
+			
+			private function confirm():void
+			{
+				dispatchEvent(new Event("confirm"));
+			}
+			
+		]]>
+	</mx:Script>
+
+	<generation:PackageConfig id="packageConfig"
+		mainPackageName="{packageTi.text}"/>
+
+	<mx:Label x="10" text="Main Package Name" y="10" fontWeight="bold"/>
+	<view:HelpIcon toolTip="This should match your project's source directory structure." y="36" right="10"/>
+	<mx:TextInput id="packageTi" text="com.website.application" right="54" left="10" y="36"
+		enter=" confirm()"/>
+
+
+	<mx:Label x="10" y="85" text="Project type" fontWeight="bold"/>	
+	<view:HelpIcon toolTip="Choose the architecture framework for your project. You'll still have to add the corresponding swc file to your Flex library path." right="10" y="111"/>
+	<mx:ComboBox y="111" id="genCMB"
+		enter=" confirm()"
+		change=" onChange(genCMB.selectedItem)"
+		labelField="label"
+		dataProvider="{ myConfig}" left="10" right="54"></mx:ComboBox>
+		
+	
+</mx:Module>

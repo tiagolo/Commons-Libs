@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Image source="@Embed('../../../assets/img/search.png')" verticalCenter="0"/>
+	<mx:TextInput id="searchStr" borderStyle="none" backgroundAlpha="0" width="125" verticalCenter="2" focusThickness="0"
+		borderSkin="@Embed('../../../assets/img/blank.png')" x="13" paddingTop="0"/>
+</mx:Canvas>

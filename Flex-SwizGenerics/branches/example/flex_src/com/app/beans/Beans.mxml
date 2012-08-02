@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swiz:BeanProvider xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:mx="library://ns.adobe.com/flex/mx"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:swiz="http://swiz.swizframework.org" 
+				   xmlns:business="com.app.business.*" 
+				   xmlns:commonslibs="http://www.commonslibs.org/flex/cl">
+	<fx:Declarations>
+		<!-- SwizBeans -->
+		<swiz:ServiceHelper id="serviceHelper"/>
+		<!-- CommonsLibsBeans -->
+		<commonslibs:AlertManager id="alertManager"/>
+
+		<s:RemoteObject id="itemService" destination="itemService" showBusyCursor="true"/>
+		<s:RemoteObject id="familiaService" destination="familiaService" showBusyCursor="true"/>
+
+		<business:ItemManager id="itemManager" service="{itemService}"/>
+		<business:FamiliaManager id="familiaManager" service="{familiaService}"/>
+	</fx:Declarations>
+</swiz:BeanProvider>

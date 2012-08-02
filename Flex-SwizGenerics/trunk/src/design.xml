@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<design version="2">
+
+	<namespaces>
+		<namespace prefix="cl" uri="http://www.commonslibs.org/flex/cl"/>
+	</namespaces>
+	
+	<categories>
+        <category id="CommonsLibs" label="CommonsLibs - Business" defaultExpand="true" />
+    </categories>
+
+	<components>
+		<component name="AlertManager"		displayName="AlertManager"		namespace="cl"	category="CommonsLibs" />
+		<component name="GenericManager"	displayName="GenericManager"	namespace="cl"	category="CommonsLibs" />
+		<component name="ReportManager"	displayName="ReportManager"	namespace="cl"	category="CommonsLibs" />
+	</components>
+    
+</design>

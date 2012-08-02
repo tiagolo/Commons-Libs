@@ -1,0 +1,26 @@
+package *MODELPACKAGE*
+{
+	
+	import org.puremvc.as3.interfaces.IProxy;
+	import org.puremvc.as3.patterns.proxy.Proxy;
+	import mx.collections.ArrayCollection;
+
+*IMPORTS*		
+	
+	[Bindable]
+	public class *NAME*Proxy extends Proxy implements IProxy 
+	{
+	
+		public static const NAME:String = "*NAME*Proxy";
+
+*PROPERTIES*
+
+		public function *NAME*Proxy(proxyName:String=null, data:Object=null)
+		{
+			super(NAME, data );
+		}
+
+*METHODS*	
+		
+	}
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*"
+	creationComplete=" sfp.browseForFile()"
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="486" 
+	height="400" 
+	xmlns:view="com.dehats.fcg.view.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.view.AssetManager;
+			import codegen.generation.IGenManager;
+			import codegen.generation.IClientGenManager;
+			import codegen.generation.FlexGenManager;
+			import mx.collections.ArrayCollection;
+			import codegen.analysis.PseudoClassMethod;
+			import mx.managers.PopUpManager;
+			import codegen.analysis.PseudoClass;
+			
+			[Bindable]
+			private var currentFile:PseudoClass;
+			
+			[Bindable]
+			private var methodCollec:ArrayCollection;
+			 
+			[Bindable]
+			private var currentMethod:PseudoClassMethod;
+
+			[Bindable]
+			public var as3_types:Array;
+
+			override public function set genManager(pManager:IGenManager):void
+			{
+				super.genManager = pManager;
+				as3_types = (pManager as FlexGenManager).as3_types;
+			}			
+						
+			private function onFileChosen(pFile:PseudoClass):void
+			{
+				currentFile = pFile;
+				methodCollec = new ArrayCollection(currentFile.methods);
+
+				focusManager.setFocus(endPointTi);
+			}
+						
+			override public function create():void
+			{
+				var clientGenManager:FlexGenManager = genManager as FlexGenManager;
+				var files:Array = clientGenManager.addRemoteService(sfp.currentServerClassFile, 
+													endPointTi.text, 
+													destTi.text);			
+									
+				setGeneratedFiles(files);				
+			}
+			
+			
+			private function removeSelection():void
+			{
+				var selectedMethods:Array = methodList.selectedItems;
+				
+				for ( var i:int = 0 ; i < selectedMethods.length ; i++)
+				{
+					var method:Object = selectedMethods[i];
+					var index:int = methodCollec.getItemIndex(method);
+					methodCollec.removeItemAt(index);
+				}
+				
+				
+			}
+			
+			private function methodLabel(pData:Object):String
+			{
+				var method:PseudoClassMethod = pData as PseudoClassMethod;
+				
+				return method.name+" ("+method.arguments.length+")";
+			}
+		
+		]]>
+	</mx:Script>
+		
+			
+	
+	<view:ClassFilePicker id="sfp" top="0" left="0" right="0" height="67"
+		change="onFileChosen(sfp.currentServerClassFile)" />
+
+	<mx:Label x="10" y="75" text="Service Name" styleName="SmallTitle"/>
+	<mx:Label text="{ currentFile.className}" x="108" y="76" width="190"/>
+	
+	<mx:Label x="10" y="103" text="EndPoint" styleName="SmallTitle" />		
+	<mx:TextInput id="endPointTi" x="108" y="101" text="Place your gateway URL here..." fontWeight="bold"
+		enter=" create()"/>
+	<view:HelpIcon toolTip="Your AMF gateway endpoint URL. Note that no services-config.xml file will be created." x="306" y="104"/>
+
+	<mx:Label x="10" y="133" text="Destination" styleName="SmallTitle"/>
+	<mx:TextInput x="108" y="131" id="destTi" text="GenericDestination" width="190"/>	
+	<view:HelpIcon toolTip="Keep 'GenericDestination' if you wish not to use a services-config.xml file." x="306" y="135"/>
+	
+
+			
+	<mx:Label x="10" y="176" text="Service Methods" styleName="SmallTitle"/>
+	<view:HelpIcon toolTip="The list of the detected methods of your service. You can choose to ignore some by removing them." x="113" y="178"/>
+	<mx:List id="methodList" width="195"
+		change=" currentMethod = methodList.selectedItem as PseudoClassMethod"
+		 allowMultipleSelection="true"
+		dataProvider="{methodCollec}"
+		labelFunction="methodLabel" x="10" top="202" bottom="40"></mx:List>
+		
+	<mx:Button label="Remove selected methods" icon="{ AssetManager.deleteIcon }" x="10" bottom="10"
+		click="removeSelection()" 
+		enabled="{ methodList.selectedItems.length>0}" />
+
+
+	<mx:Canvas left="213" right="10" bottom="10" top="202" borderStyle="solid"
+		enabled="{currentMethod!=null}">
+		
+		<mx:Label x="10" y="8" text="Arguments" styleName="SmallTitle" />
+		<mx:DataGrid
+			enabled="{ currentMethod.arguments.length>0}"
+			dataProvider="{currentMethod.arguments}"
+			editable="true" top="34" bottom="51" right="10" left="10">
+			<mx:columns>
+				<mx:DataGridColumn editable="false" headerText="Name" dataField="name"/>
+				<mx:DataGridColumn editable="true" headerText="AS3 Type" dataField="type">
+					<mx:itemEditor>
+						<mx:Component>
+							<view:AutoComplete dataProvider="{parentDocument.as3_types}"/>
+						</mx:Component>
+					</mx:itemEditor>
+				</mx:DataGridColumn>
+			</mx:columns>
+		</mx:DataGrid>
+		<view:HelpIcon toolTip="You can change the type of the methods parameters (recommended for PHP services)." x="83" y="10"/>
+		<view:HelpIcon toolTip="You can change the return type for this method (recommended for PHP services)." x="86" bottom="10"/>
+		<mx:Label x="10" text="Return type" styleName="SmallTitle"  bottom="10"/>
+		
+		<view:AutoComplete id="returnTypeTi" 
+			dataProvider="{as3_types}"
+			change="currentMethod.returnType=returnTypeTi.text"
+			text="{currentMethod.returnType}" bottom="10" left="110" right="10"/>
+				
+	</mx:Canvas>
+
+<!--
+	<mx:Button label="Cancel" icon="@Embed(source='../../../assets/cancel.png')"
+		click="PopUpManager.removePopUp(this);"  x="395" y="135"/>
+	<mx:Button  label="Finish" icon="@Embed(source='../../../assets/accept.png')"
+		enabled="{currentFile!=null}"
+		click="create()"  x="399" y="163"/>
+-->			
+</OperationDialog>

@@ -1,0 +1,52 @@
+package *VIEWPACKAGE*
+{
+	import *MAINPACKAGE*.ApplicationFacade;
+*PROXYIMPORT*
+	import *VOPACKAGE*.*VO*;
+	import *COMPONENTSPACKAGE*.*VIEWNAME*;
+*EVENTIMPORT*	
+	import flash.events.Event;	
+	import org.puremvc.as3.interfaces.IMediator;
+	import org.puremvc.as3.interfaces.INotification;
+	import org.puremvc.as3.patterns.mediator.Mediator;
+
+	public class *VIEWNAME*Mediator extends Mediator implements IMediator
+	{
+		
+*PROXYPROP*
+		public static const NAME:String = '*VIEWNAME*Mediator';
+		
+		
+		public function *VIEWNAME*Mediator(viewComponent:Object=null)
+		{
+			super(NAME, viewComponent);
+			// Add Listeners
+*ADDLISTENERS*			
+		}
+		
+		
+		public function get *LC_VIEWNAME*():*VIEWNAME*{
+			return viewComponent as *VIEWNAME*;
+		}		
+		
+*LISTENERS*		
+		
+		override public function listNotificationInterests():Array
+		{
+			return [
+*NOTIF_INTERESTS*			
+			 ];
+		}
+		
+		override public function handleNotification(notification:INotification):void
+		{
+			
+			switch ( notification.getName() )
+			{
+*NOTIF_HANDLING*
+			}
+				
+		}
+		
+	}
+}

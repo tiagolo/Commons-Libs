@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="480" 
+	height="440"
+	xmlns:ns1="codegen.view.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.view.AssetManager;
+			import codegen.analysis.SQLDBData;
+			import codegen.generation.PHPGenManager;
+			import codegen.generation.TemplateManager;
+			import codegen.generation.PHPGenerator;
+			import codegen.generation.GeneratedFile;
+			import codegen.analysis.SQLTable;
+			import codegen.analysis.SQLDBData;
+			import codegen.analysis.SQLStructureParser;
+			import mx.collections.ArrayCollection;
+			import mx.managers.PopUpManager;
+						
+			[Bindable]
+			public var dbData:SQLDBData; 
+
+			[Bindable] 
+			public var currentTable:SQLTable;
+			
+			[Bindable]
+			public var filePath:String;
+			
+			
+			private function selectSQLData():void
+			{
+				var f:File = new File();
+				f.addEventListener(Event.SELECT, onSQLDataSelected);
+				f.browseForOpen("Select SQL structure file");				
+			}			
+			
+			private function onSQLDataSelected(pEvt:Event):void
+			{
+				var f:File = pEvt.target as File;
+				filePath = f.nativePath;
+
+				var anal:SQLStructureParser = new SQLStructureParser();
+				dbData = anal.analyzeCode(getFileString(f));
+				
+			}
+			
+			public static function getFileString(file:File, pEncoding:String="utf-8"):String
+			{
+				
+				var stream:FileStream = new FileStream();
+				
+				stream.open(file, FileMode.READ);
+				
+				var str:String = stream.readMultiByte(stream.bytesAvailable, pEncoding);
+				
+				stream.close();
+				
+				return str;
+			}
+					
+			
+			private function removeSelection():void
+			{
+				var i:int =dbData.tables.getItemIndex(currentTable);
+				dbData.tables.removeItemAt(i);
+			}
+			
+			override public function create():void
+			{ 
+
+				var genManager:PHPGenManager = (genManager as PHPGenManager);
+				
+				genManager.objectStyleAccess = objectStyleAccessCB.selected;
+				
+				var fileList:Array = genManager.addSQLDBData(dbData);
+				
+				setGeneratedFiles(fileList);
+
+			}
+
+		]]>
+	</mx:Script>
+	
+	<mx:Label x="10" y="12" text="Select your SQL structure file" styleName="SmallTitle"/>
+	<mx:TextInput x="10" y="38" width="364" text="{filePath}"/>
+	<mx:Button x="382" y="38" label="Browse" click="selectSQLData()"/>
+	
+	<mx:List id="tableList" x="10" y="102" width="144"
+		change=" currentTable = tableList.selectedItem as SQLTable"
+		dataProvider="{ dbData.tables}" 
+		labelField="name"  height="222"></mx:List>
+	
+	<mx:Label x="10" y="76" text="Tables" styleName="SmallTitle"/>
+	<mx:Button x="162" y="303" label="Remove Table" icon="{ AssetManager.deleteIcon}"
+		enabled="{ currentTable!=null}"
+		click="removeSelection()"/>
+	<mx:Label x="162" y="105" text="Fields" styleName="SmallTitle"/>
+	
+	<mx:DataGrid x="162" y="130" width="288" height="165"
+		dataProvider="{ currentTable.fields}">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Name" dataField="name"/>
+			<mx:DataGridColumn headerText="SQL Type" dataField="type"/>
+			<mx:DataGridColumn headerText="Primary Key?" dataField="is_primary_key"/>
+		</mx:columns>
+	</mx:DataGrid>
+
+	<mx:CheckBox id="objectStyleAccessCB" selected="true" x="10" y="332" label="Use object syntax to access properties"/>
+	<HelpIcon x="183" y="13" toolTip="Choose a MySQL, SQLServer or Oracle structure file. Please use SQL structure files only (ie CREATE TABLE statements)."/>
+	<HelpIcon x="60" y="78" toolTip="Tables found in your structure file."/>
+	<HelpIcon x="207" y="106" toolTip="Table fields for the selected table."/>
+	<HelpIcon x="254" y="333" toolTip="Uses PHP Object syntax (obj->attribute) instead of associative array syntax (obj['attribute']). You may have to change this according to your AMF PHP Gateway."/>
+	<HelpIcon x="294" y="303" toolTip="Discards table from code generation process."/>
+<!--	
+		<mx:Button label="Cancel" click=" PopUpManager.removePopUp(this)" icon="@Embed(source='../../../assets/cancel.png')" x="294" y="408"/>	
+		<mx:Button label="Create"  icon="@Embed(source='../../../assets/accept.png')"
+			click=" create()"
+			enabled="{ dbData !=null}" x="388" y="408"/>
+-->	
+</OperationDialog>

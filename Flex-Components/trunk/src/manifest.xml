@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<componentPackage>
+
+	<component id="core" 					class="org.commonsLibs.flex.core.cl_internal"/>
+	<component id="ViewStack" 				class="org.commonsLibs.flex.containers.ViewStack"/>
+	<component id="DataGrid"	 			class="org.commonsLibs.flex.controls.DataGrid"/>
+	<component id="SparkDataGrid"	 		class="org.commonsLibs.flex.controls.SparkDataGrid"/>
+	<component id="List" 					class="org.commonsLibs.flex.controls.List"/>
+	<component id="MaskedTextInput" 		class="org.commonsLibs.flex.controls.MaskedTextInput"/>
+	<component id="MTISkin" 				class="org.commonsLibs.flex.controls.maskedTextInputClasses.MTISkin"/>
+	<component id="TabManager" 				class="org.commonsLibs.flex.managers.TabManager"/>
+	<component id="DateRenderer" 			class="org.commonsLibs.flex.renderers.DateRenderer"/>
+	<component id="CheckBoxRenderer" 		class="org.commonsLibs.flex.renderers.CheckBoxRenderer"/>
+	<component id="EncryptionKeyGenerator"	class="org.commonsLibs.flex.security.EncryptionKeyGenerator"/>
+	<component id="ObjectTranslator" 		class="org.commonsLibs.flex.utils.ObjectTranslator"/>
+	<component id="SQLUtil" 				class="org.commonsLibs.flex.utils.SQLUtil"/>
+	<component id="StringUtil" 				class="org.commonsLibs.flex.utils.StringUtil"/>
+	<component id="PagedList" 				class="org.commonsLibs.flex.collections.PagedList"/>
+
+</componentPackage>

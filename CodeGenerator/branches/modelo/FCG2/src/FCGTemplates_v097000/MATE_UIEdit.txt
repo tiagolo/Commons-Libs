@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.hillelcoren.utils.KeyboardUtil;
+			import *EVENTSPACKAGE*.GenericEvent;
+			import *EVENTSPACKAGE*.*VO*Event;
+			import *MODELPACKAGE*.*VO*;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]
+			public var *LC_VO*:*VO*;
+			
+			protected function btnSalvar_clickHandler(event:MouseEvent):void
+			{
+				var *LC_VO*Event:*VO*Event = new *VO*Event(*VO*Event.SAVE);
+				*LC_VO*Event.*LC_VO* = *LC_VO*;
+				dispatchEvent(*LC_VO*Event);
+			}
+			
+			protected function btnCancelar_clickHandler(event:MouseEvent):void
+			{
+				var *LC_VO*Event:*VO*Event = new *VO*Event(*VO*Event.STATE_CHANGE);
+				*LC_VO*Event.currentState = GenericEvent.LIST_STATE;
+				dispatchEvent(*LC_VO*Event);
+			}
+			
+			override protected function keyUpHandler(event:KeyboardEvent):void
+			{
+				if(event.charCode == Keyboard.ESCAPE)
+				{
+					btnCancelar_clickHandler(null);
+				}
+				else if(event.ctrlKey && KeyboardUtil.charCodeToChar(event.charCode).toLocaleLowerCase() == 's')
+				{
+					btnSalvar_clickHandler(null);
+				}	
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Array id="validators">
+		<!-- Implementar Validators -->
+	</mx:Array>
+
+*BINDINGS*
+	<mx:Form width="100%" height="100%">
+		<mx:FormHeading label="Cadastro de *VO*"/>
+*FORMITEMS*	</mx:Form>
+	<mx:HBox>
+		<mx:Button id="btnSalvar" toolTip="Ctrl + S" buttonMode="true" label="Salvar" click="btnSalvar_clickHandler(event)"/>
+		<mx:LinkButton id="btnCancelar" toolTip="Esc" buttonMode="true" label="Cancelar" click="btnCancelar_clickHandler(event)"/>
+	</mx:HBox>
+</mx:VBox>

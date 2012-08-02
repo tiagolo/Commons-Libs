@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="308" height="70">
+
+	<mx:Metadata>
+		[Event(name="change")]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import codegen.analysis.CSParser;
+			import codegen.analysis.JavaParser;
+			import codegen.analysis.PHPParser;
+			import mx.controls.Alert;
+			import codegen.analysis.PseudoClass;
+			
+			[Bindable]
+			private var selectedFile:File;
+			
+			[Bindable]
+			private var filePath:String ;
+		
+			[Bindable]
+			public var currentServerClassFile:PseudoClass;
+
+			[Bindable]			
+			private var classList:Array;
+
+			
+			public function browseForFile():void
+			{
+				if(selectedFile==null)
+				{
+					selectedFile = new File();
+					selectedFile.addEventListener(Event.SELECT, onClassFileSelected);					
+				}
+				
+				
+				selectedFile.browseForOpen('Select a PHP, Java or C# file' );
+				
+			}
+			
+		
+			private function onClassFileSelected(pEvt:Event):void
+			{
+				
+				var pFile:File = pEvt.target as File ;
+				
+				filePath = pFile.nativePath ;
+
+				var serverCode:String = getFileString(pFile);
+			
+				var fileExt:String = pFile.extension.toLowerCase() ;
+
+				classList = analyzeFile(serverCode, fileExt);
+				
+				if( classList == null) Alert.show("This file type is not supported", "Error");		
+											
+				else if(classList.length==0) Alert.show("This file type is not supported", "Error");		
+				
+				else setClass(0);
+			}		
+			
+			public static function getFileString(file:File, pEncoding:String="utf-8"):String
+			{
+				
+				var stream:FileStream = new FileStream();
+				
+				stream.open(file, FileMode.READ);
+				
+				var str:String = stream.readMultiByte(stream.bytesAvailable, pEncoding);
+				
+				stream.close();
+				
+				return str;
+			}
+					
+			private function setClass(pIndex:int):void
+			{
+
+				if ( pIndex==-1) pIndex = 0 ;
+				
+				currentServerClassFile = classList[pIndex];
+				
+				dispatchEvent(new Event("change"));
+				
+			}
+			
+			public static function analyzeFile( fileCode:String, fileExt:String):Array
+			{
+							
+				var classList:Array ;
+				
+				if(fileExt=="php" || fileExt=="php5") 
+				{
+					classList = new PHPParser().parseCode(fileCode);
+				}
+				else if(fileExt=="java") 
+				{
+					classList = new JavaParser().parseCode(fileCode);
+				}	
+				else if(fileExt=="cs") 
+				{
+					classList = new CSParser().parseCode(fileCode);
+				}
+				else
+				{
+					return null;
+				}
+				
+				return classList;
+			}
+		
+		]]>
+	</mx:Script>
+		
+	<mx:Label x="10" y="10" text="File " styleName="SmallTitle"/>
+	
+	<mx:TextInput text="{filePath}" y="8" right="102.2" left="46"/>
+	
+	<mx:Button y="8" label="Browse" right="10" icon="{ AssetManager.folder_exploreIcon }"
+		click=" browseForFile()"/>
+	
+	<mx:Label x="10" y="42" styleName="SmallTitle"
+		visible="{classList.length>1}" 
+		text="{classList.length + ' classes found : ' }"/>
+	
+	<mx:ComboBox  id="classCmb" labelField="className" x="122" y="38"
+		visible="{classList.length>1}"
+		dataProvider="{classList}"
+		change="setClass(classCmb.selectedIndex)" ></mx:ComboBox>
+	
+</mx:Canvas>

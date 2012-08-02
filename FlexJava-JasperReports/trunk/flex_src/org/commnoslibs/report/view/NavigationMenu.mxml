@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Tree xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"  selectable="true"
+		 itemClick="btnCarregarParametros_clickHandler(event)">
+
+	<mx:Metadata>
+		[Inject(source="reportManager.listaRelatorios",destination="dataProvider",bind=true)]
+		[Inject(source="reportManager.report",destination="selectedItem",bind=true)]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import org.commnoslibs.report.events.ReportEvent;
+			import org.commnoslibs.report.models.Report;
+
+			public function btnCarregarParametros_clickHandler(event:Event):void
+			{
+				if(selectedItem is Report)
+				{
+					var e:ReportEvent = new ReportEvent(ReportEvent.URLREQUEST);
+					e.report = selectedItem as Report;
+					dispatchEvent(e);
+				}
+			}
+		]]>
+	</mx:Script>
+
+</mx:Tree>

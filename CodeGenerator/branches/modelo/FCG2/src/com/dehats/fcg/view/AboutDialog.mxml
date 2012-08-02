@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="368"
+	borderAlpha="1"
+	showCloseButton="true"
+	close=" PopUpManager.removePopUp(this)" title="About FCG">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			
+			private function navTo(pUrl:String):void
+			{
+				navigateToURL( new URLRequest(pUrl),"_blank")	;			
+			}
+		]]>
+	</mx:Script>
+	<mx:Label x="10" y="118" text="Code by David Deraedt" fontWeight="bold"/>
+	<mx:LinkButton click="navTo(event.target.label)" x="10" y="144" label="http://www.dehats.com/drupal/"/>
+	<mx:LinkButton click="navTo(event.target.label)" x="10" y="62" label="http://www.dehats.com/drupal/?q=node/7"/>
+	<mx:Label x="10" y="174" text="Icons by famfamfam" fontWeight="bold"/>
+	<mx:LinkButton click="navTo(event.target.label)" x="10" y="200" label="http://www.famfamfam.com/"/>
+	<mx:Label x="10" y="230" text="AS3 Syntax Highlight by Mark Walters" fontWeight="bold"/>
+	<mx:LinkButton click="navTo(event.target.label)" x="10" y="256" label="http://www.digitalflipbook.com/"/>
+	<mx:LinkButton click="navTo(event.target.label)" x="10" y="286" label="http://code.google.com/p/syntaxhighlighter/"/>
+	<mx:Label x="10" y="10" text="Version"/>
+	<mx:Label x="64" y="10" text="{NativeApplication.nativeApplication.applicationDescriptor.children()[3]}"/>
+	<mx:Label x="10" y="36" text="Project's page" fontWeight="bold"/>
+	<mx:Label x="10" y="92" text="Credits"/>
+	
+</mx:TitleWindow>

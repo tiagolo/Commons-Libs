@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>CommonsLibs-SpringHibernate</artifactId>
+	<packaging>jar</packaging>
+
+	<name>CommonsLibs-SpringHibernate</name>
+	<url>http://www.assembla.com/spaces/commonsLibs</url>
+
+	<parent>
+		<groupId>org.commonsLibs</groupId>
+		<artifactId>CommonsLibs</artifactId>
+		<version>1.6-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
+	</parent>
+
+	<scm>
+		<connection>scm:svn:http://subversion.assembla.com/svn/commonsLibs/Java-SpringHibernate/trunk/</connection>
+		<developerConnection>scm:svn:http://subversion.assembla.com/svn/commonsLibs/Java-SpringHibernate/trunk/</developerConnection>
+		<url>http://subversion.assembla.com/svn/commonsLibs/maven/</url>
+	</scm>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>3.1.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.1.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.flex</groupId>
+			<artifactId>spring-flex-core</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.9.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>SpringFlex</id>
+			<name>SpringFlex Source Repo</name>
+			<url>https://src.springsource.org/svn/spring-flex/tags/spring-flex-1.5.0.RELEASE/local-repo/</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<sourceDirectory>${basedir}/src</sourceDirectory>
+		<testSourceDirectory>${basedir}/test</testSourceDirectory>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>LocalFolder</id>
+			<url>maven</url>
+		</repository>
+	</distributionManagement>
+
+</project>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" 
+						keyUp="onKeyUp(event)"
+						layout="absolute" xmlns:view="com.dehats.fcg.view.*"
+						xmlns:control="com.dehats.fcg.control.*"
+						width="1020"
+						height="600"
+						showStatusBar="false"
+						creationComplete="onCreationComplete()"  >
+	
+	<mx:Style source="../FCG.css" />
+	
+	<mx:Script> 
+		<![CDATA[
+			import com.dehats.fcg.view.HelpIcon;
+			import com.dehats.fcg.view.AssetManager;
+			import com.dehats.fcg.model.ModelLocator;
+			import com.dehats.fcg.view.AboutDialog;
+			import mx.events.CloseEvent ;
+			import mx.controls.Alert ;
+			import com.adobe.cairngorm.control.CairngormEvent ;
+			import com.dehats.fcg.events.* ;
+			import mx.managers.PopUpManager ; 
+			
+			
+			[Bindable]
+			public var appModel:ModelLocator = ModelLocator.getInstance();
+			
+			
+			private function onCreationComplete():void
+			{	
+				HelpIcon.ENABLED = true ;
+				new CairngormEvent(FController.START_UP).dispatch();	
+			}
+			
+			// DIALOGS
+			
+			private function createAboutDialog():void
+			{
+				var dialog:AboutDialog = PopUpManager.createPopUp( this, AboutDialog, true) as AboutDialog;
+				PopUpManager.centerPopUp(dialog);
+			}
+			
+			private function askNewProject():void
+			{
+				Alert.show("Are you sure you want to start a new project? All changes will be  lost.", "New Project", Alert.YES|Alert.NO, null, newProjectAnswer);
+			}
+			
+			private function newProjectAnswer(pEvt:CloseEvent):void
+			{
+				if(pEvt.detail==Alert.YES) new CairngormEvent(FController.NEW_PROJECT).dispatch();
+			}
+			
+			// Help mgmt
+			private function onKeyUp(pEvt:KeyboardEvent):void
+			{
+				if(pEvt.keyCode==72) toggleHelp();
+			}
+			
+			private function toggleHelp():void
+			{
+				HelpIcon.ENABLED = ! HelpIcon.ENABLED;
+			}
+			
+			
+		]]>
+	</mx:Script>
+	
+	<control:FController id="controller"/> 
+	
+	<mx:ApplicationControlBar x="10" y="0" dock="true" color="#FFFFFF" doubleClickEnabled="true" >
+		<mx:LinkButton label="New Project" 
+					   enabled="{ appModel.appScreenIndex == appModel.SCREEN_MAIN}"
+					   click="askNewProject()"/>
+		<mx:LinkButton label="Toggle Help (H)" 
+					   click="toggleHelp()"/>
+		<mx:Spacer width="100%"/>		
+		<mx:LinkButton label="About" click=" createAboutDialog()"/>
+	</mx:ApplicationControlBar>
+	
+	<mx:ViewStack id="mainStack" selectedIndex="{ appModel.appScreenIndex}" left="10" right="10" top="10" bottom="10">
+		
+		<mx:Canvas width="100%" height="100%">	
+			
+			<view:ProjectSetUp id="setUpPanel" title="Project Setup" width="448" height="300"
+							   startProject="event.dispatch()" x="458" y="11"/>		
+			
+		</mx:Canvas>
+		
+		
+		<mx:HDividedBox width="100%" height="100%" >
+			
+			<mx:Panel title="Control Panel" width="450" height="100%" layout="absolute" >
+				
+				<view:FileListTab label="Generated Files" width="100%" height="100%"
+								  rootDir="{ appModel.generationFolder}"
+								  operationList="{ appModel.operationList}"
+								  selectedFiles="{appModel.selectedFiles}"
+								  fileSelection="event.dispatch();"
+								  fileDeletion=" event.dispatch()" /> 
+				
+				<mx:ControlBar horizontalAlign="center">
+					
+					<mx:Button  label="Publish selected files" 
+								toolTip="Copy selected files on your drive"
+								enabled="{ appModel.selectedFiles.length>0}"
+								click=" new CreateFileListUIEvent(CreateFileListUIEvent.EVENT_CREATEFILELISTUI,appModel.selectedFiles).dispatch();" 
+								icon="{AssetManager.diskIcon}"/>
+					
+					<mx:Button label="Publish all generated files" 
+							   toolTip="Copy all files on your drive"
+							   click=" new CreateFileListUIEvent(CreateFileListUIEvent.EVENT_CREATEFILELISTUI).dispatch();" 
+							   icon="{ AssetManager.diskIcon }"/>
+					
+				</mx:ControlBar>
+				
+			</mx:Panel>			
+			
+			<mx:Panel id="previewPanel" width="60%" height="100%" layout="absolute" 
+					  title="{appModel.firstSelectedFile.name}">
+				
+				<view:FileCodePreview id="asFilePreview" left="0" top="0" bottom="0" right="0"
+									  enabled="{!appModel.firstSelectedFile.isDirectory}"
+									  fileName="{ appModel.firstSelectedFile.name}"
+									  fileType="{appModel.firstSelectedFile.extension}"
+									  fileCode="{appModel.selectedFileCode}"/>
+				
+			</mx:Panel>
+			
+		</mx:HDividedBox>	
+		
+	</mx:ViewStack>
+	
+</mx:WindowedApplication>

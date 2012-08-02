@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="190" height="26" xmlns:ns1="com.dehats.fcg.view.*">
+
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.events.OpenOpeDialogEvent;
+			
+			[Bindable]			
+			public var btLabel:String;
+			[Bindable]			
+			public var helpMsg:String;
+
+			public var dialogClass:Class;
+			
+		]]>
+	</mx:Script>
+
+	<mx:Button id="bt" x="3" y="2" label="{btLabel}" width="159"
+		click=" new OpenOpeDialogEvent(OpenOpeDialogEvent.EVENT_OPENOPEDIALOG, btLabel, dialogClass).dispatch()"/>
+	<ns1:HelpIcon x="170" y="5" toolTip="{helpMsg}"/>
+	
+</mx:Canvas>

@@ -1,0 +1,8 @@
+   <mx:RemoteObject
+    	id="*SERVICENAME*"
+    	endpoint="*ENDPOINT*"
+    	destination="*DESTINATION*"
+    	makeObjectsBindable="true"
+    	source="*SERVICENAME*"
+		showBusyCursor="true">
+    </mx:RemoteObject>

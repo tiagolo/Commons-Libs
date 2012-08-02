@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:NavigatorContent creationComplete="dispatchEvent(new ReportEvent(ReportEvent.FIND_REPORTS))"
+					xmlns:mx="http://www.adobe.com/2006/mxml"
+					xmlns:s="library://ns.adobe.com/flex/spark">
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+
+	<mx:Script>
+		<![CDATA[
+			import mx.containers.FormHeading;
+
+			import org.commnoslibs.report.events.ReportEvent;
+			import org.commnoslibs.report.models.Report;
+			import org.commnoslibs.report.models.ReportExportType;
+
+			//------------------------------------------------------------------------------
+			//
+			//   Attributos 
+			//
+			//------------------------------------------------------------------------------
+
+			//--------------------------------------
+			//   Property 
+			//--------------------------------------
+
+			[Bindable]
+			public var info:String = "Selecione um relatório ao lado";
+
+			[Bindable]
+			[Inject(source="reportManager.report",bind=true)]
+			public var report:Report;
+
+			//------------------------------------------------------------------------------
+			//
+			//   Metodos 
+			//
+			//------------------------------------------------------------------------------
+
+			//--------------------------------------
+			//   Function 
+			//--------------------------------------
+
+
+			public function btnPrint_clickHandler(event:MouseEvent):void
+			{
+				var reportEvent:ReportEvent = new ReportEvent(ReportEvent.PRINT);
+				reportEvent.exportType = ReportExportType.PRINT;
+
+				invalidateDisplayList();
+				dispatchEvent(reportEvent);
+			}
+
+			public function btnExcel_clickHandler(event:MouseEvent):void
+			{
+				var reportEvent:ReportEvent = new ReportEvent(ReportEvent.PRINT);
+				reportEvent.exportType = ReportExportType.XLS;
+
+				invalidateDisplayList();
+				dispatchEvent(reportEvent);
+			}
+
+			public function btnCSV_clickHandler(event:MouseEvent):void
+			{
+				var reportEvent:ReportEvent = new ReportEvent(ReportEvent.PRINT);
+				reportEvent.exportType = ReportExportType.CSV;
+
+				invalidateDisplayList();
+				dispatchEvent(reportEvent);
+			}
+
+			public function btnImprimir_clickHandler(event:MouseEvent):void
+			{
+				var reportEvent:ReportEvent = new ReportEvent(ReportEvent.PRINT);
+				reportEvent.exportType = ReportExportType.PDF;
+
+				invalidateDisplayList();
+				dispatchEvent(reportEvent);
+			}
+
+			[Mediate(event="ReportEvent.CLEAR_FORM")]
+			public function clearForm():void
+			{
+				form.removeAllChildren();
+				form.addChild(cvInfo);
+			}
+
+			[Mediate(event="ReportEvent.URLREQUEST",properties="report")]
+			public function urlRequestHandler(report:Report):void
+			{
+				if (report)
+				{
+					var e:ReportEvent = new ReportEvent(ReportEvent.FILL_PARAMETERS);
+					e.report = report;
+					e.form = form;
+
+					dispatchEvent(e);
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Array id="filterArray">
+		<mx:DropShadowFilter color="#696969"
+							 alpha=".7"
+							 blurX="3"
+							 blurY="3"
+							 distance="1"
+							 inner="true"
+							 quality="3"
+							 strength="1.6"/>
+		<mx:DropShadowFilter color="#ABABAB"
+							 alpha=".7"
+							 blurX="4"
+							 blurY="4"
+							 distance="1"
+							 quality="3"
+							 strength="2"/>
+	</mx:Array>
+
+	<mx:VBox width="100%" height="100%">
+		<mx:FormHeading label="{ report.label }"
+						alpha=".8"
+						filters="{ filterArray }"/>
+		<s:Label includeInLayout="{ Boolean(report) }"
+				 text="Parâmetros"
+				 visible="{ Boolean(report) }"/>
+		<mx:Canvas width="100%" height="100%">
+			<mx:Form id="form" width="90%" height="100%" minWidth="250"
+					 verticalGap="8">
+				<mx:Canvas id="cvInfo" width="100%" height="100%"
+						   horizontalScrollPolicy="off">
+					<mx:FormHeading id="txInfo"
+									horizontalCenter="0"
+									verticalCenter="-20"
+									label="{ info }"
+									alpha=".6"
+									filters="{ filterArray }"/>
+				</mx:Canvas>
+			</mx:Form>
+		</mx:Canvas>
+	</mx:VBox>
+
+	<s:HGroup>
+		<s:Button id="btnPrint"
+				  enabled="{ Boolean(report) }"
+				  styleName="Imprimir"
+				  toolTip="Enviar para a impressora"
+				  click="btnPrint_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnImprimir"
+				  enabled="{ Boolean(report) }"
+				  styleName="Imprimir"
+				  toolTip="Gerar Relatório"
+				  click="btnImprimir_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnExcel"
+				  enabled="{ Boolean(report) }"
+				  styleName="ExportarExcel"
+				  toolTip="Exportar para Excel"
+				  click="btnExcel_clickHandler(event)"
+				  buttonMode="true"/>
+		<s:Button id="btnCSV"
+				  enabled="{ Boolean(report) }"
+				  styleName="ExportarCSV"
+				  toolTip="Exportar para CSV"
+				  click="btnCSV_clickHandler(event)"
+				  buttonMode="true"/>
+	</s:HGroup>
+
+</s:NavigatorContent>

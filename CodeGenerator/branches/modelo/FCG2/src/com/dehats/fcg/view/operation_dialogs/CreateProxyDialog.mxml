@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*" xmlns:mx="http://www.adobe.com/2006/mxml" width="242" height="76">
+	
+	<mx:Script>
+		<![CDATA[
+			import codegen.generation.GeneratedFile;
+			import codegen.generation.PureMVCGenManager;
+			
+			override public function create():void
+			{
+				var clientGenManager:PureMVCGenManager = genManager as PureMVCGenManager;
+								
+				var file:GeneratedFile = clientGenManager.createEmptyProxy(nameTi.text);
+								 
+				setGeneratedFiles([file]);
+
+			}			
+			
+		]]>
+	</mx:Script>
+	<mx:Label x="10" y="10" text="Name"/>
+	<mx:TextInput id="nameTi" x="53" y="8"/>
+</OperationDialog>

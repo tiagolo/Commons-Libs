@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	showCloseButton="true"
+	resize=" PopUpManager.centerPopUp(this)"
+	close=" PopUpManager.removePopUp(this)">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.managers.PopUpManager;
+			import codegen.generation.FlexGenManager;
+			import com.dehats.fcg.view.AssetManager;
+
+			
+			private var _operationDialog:OperationDialog;
+			
+			public function set operationDialog(pOpe:OperationDialog):void
+			{
+				addChild( pOpe );
+				_operationDialog = pOpe ;
+			}
+			
+			
+		]]>
+	</mx:Script>
+	<mx:ControlBar horizontalAlign="right">
+		<mx:Button label="Cancel"
+			click=" PopUpManager.removePopUp(this)" icon="{ AssetManager.cancelIcon }"/>
+		<mx:Button label="Finish"
+			click=" _operationDialog.create()" icon="{ AssetManager.acceptIcon }"/>
+	</mx:ControlBar>
+	
+</mx:TitleWindow>

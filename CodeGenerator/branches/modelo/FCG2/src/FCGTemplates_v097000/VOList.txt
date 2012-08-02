@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+
+	<mx:Metadata>
+		[Event(name="select*VO*", type="*EVENTSPACKAGE*.*VO*Event")]
+		[Event(name="create*VO*", type="*EVENTSPACKAGE*.*VO*Event")]
+		[Event(name="delete*VO*", type="*EVENTSPACKAGE*.*VO*Event")]
+		
+	</mx:Metadata>
+	
+
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import *VOPACKAGE*.*VO*;
+			import *EVENTSPACKAGE*.*VO*Event;
+			
+			[Bindable]
+			public var collection:ArrayCollection;
+			
+		]]>
+	</mx:Script>
+	
+	<mx:DataGrid id="dg" left="10" top="10" bottom="50" right="10"
+		change=" dispatchEvent(new *VO*Event(*VO*Event.EVENT_SELECT_*UP_VO*, dg.selectedItem as *VO*))" 
+		dataProvider="{ collection}" >
+		<mx:columns>
+*DGCOLUMNS*	
+		</mx:columns>
+	</mx:DataGrid>
+
+	<mx:Button label="Create" bottom="10" horizontalCenter="-36"
+		click="dispatchEvent(new *VO*Event(*VO*Event.EVENT_CREATE_*UP_VO*))"/>
+		
+	<mx:Button label="Delete" horizontalCenter="37" bottom="10"
+		click="dispatchEvent(new *VO*Event(*VO*Event.EVENT_DELETE_*UP_VO*, dg.selectedItem as *VO*))"/>
+	
+</mx:Canvas>

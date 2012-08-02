@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*" 
+	creationComplete=" sfp.browseForFile()"
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="424" height="440" 
+	xmlns:view="com.dehats.fcg.view.*">
+
+	
+	<mx:Script>
+		<![CDATA[
+			import codegen.analysis.PseudoClass;
+			import codegen.generation.FlexGenManager;
+			import codegen.generation.IGenManager;
+			import codegen.generation.TiagoloGenManager;
+			
+			import mx.managers.PopUpManager;
+			
+			[Bindable]
+			private var currentClassFile:PseudoClass;
+
+			[Bindable]
+			public var as3_types:Array;
+
+			override public function set genManager(pManager:IGenManager):void
+			{
+				super.genManager = pManager;
+				as3_types = (pManager as TiagoloGenManager).as3_types;
+			}
+			
+			private function onFileChosen(pFile:PseudoClass):void
+			{
+				currentClassFile = pFile;
+				focusManager.setFocus(classNameTi);
+			} 
+									
+			override public function create():void
+			{
+				var clientGenManager:TiagoloGenManager = genManager as TiagoloGenManager;
+								
+				var files:Array = clientGenManager.addVO(currentClassFile,
+								 managerCB.selected,
+								 daoCB.selected, 
+								 serviceCB.selected,
+								 eventCB.selected,
+								 telasCB.selected,
+								 classNameTi.text);
+								 
+				setGeneratedFiles(files);
+
+			}
+		
+		]]>
+	</mx:Script>
+	
+		<view:ClassFilePicker id="sfp" top="0" height="62" left="0" right="0"
+			change="onFileChosen(sfp.currentServerClassFile)" />
+
+		<mx:Label x="10" y="69" text="Distant class package" styleName="SmallTitle"/>
+		<mx:TextInput id="qualifTi" x="167" y="67" width="205" 
+			change=" currentClassFile.packageName = qualifTi.text"
+			text="{ currentClassFile.packageName}"/>
+
+	
+		<mx:Label x="10" y="95" text="Resulting AS3 class name" styleName="SmallTitle"/>
+		<mx:TextInput text="{ currentClassFile.className}" id="classNameTi" y="92" right="52" left="167"
+			enter=" create()"/>
+		
+		<mx:CheckBox id="daoCB" 	x="10" label="Gerar o Dao" selected="true" bottom="34"/>			
+		<mx:CheckBox id="serviceCB" x="10" label="Gerar o Service" selected="true" bottom="10"/>
+		<mx:CheckBox id="managerCB" x="10" label="Gerar o Manager do Mate" selected="true" bottom="58"/>
+		<mx:CheckBox id="eventCB" 	x="10" label="Gerar o Evento do Mate" selected="true" bottom="82"/>
+		<mx:CheckBox id="telasCB" 	x="10" label="Gerar o Tela do Mate" selected="true" bottom="106"/>
+		
+		<mx:DataGrid top="160" left="10" bottom="148" right="10"
+			editable="true"
+			dataProvider="{currentClassFile.properties}" >
+			<mx:columns>
+				<mx:DataGridColumn editable="false" headerText="Property name" dataField="name"/>
+				<mx:DataGridColumn headerText="AS3 type" dataField="type">
+					<mx:itemEditor>					
+						<mx:Component>
+							<view:AutoComplete dataProvider="{ parentDocument.as3_types}"/>							
+						</mx:Component>
+					</mx:itemEditor>
+				</mx:DataGridColumn>
+				<mx:DataGridColumn headerText="Create getter setter?" editorDataField="selected" rendererIsEditor="true" itemRenderer="mx.controls.CheckBox" dataField="isGetSet"/>
+			</mx:columns>
+		</mx:DataGrid>
+		<mx:Label x="10" y="136" text="Properties" styleName="SmallTitle"/>
+		<mx:Label x="10" text="Options" styleName="SmallTitle" bottom="130"/>
+		<view:HelpIcon toolTip="Generates an Event based on this ValueObject, with CRUD constants and one public property typed after this ValueObject." x="208" bottom="61"/>
+		<view:HelpIcon toolTip="Generates an MXML component with a Datagrid which is designed to display a list of ValueObjects" x="152" bottom="39"/>
+		<view:HelpIcon toolTip="Generates an MXML component with a Form that lets a user edit all the properties of this ValueObject" x="162" bottom="14"/>
+		<view:HelpIcon toolTip="You can modify the type of each attribute (useful for PHP), and decide to implement it as a getter/setter" x="79" y="136"/>
+		<view:HelpIcon toolTip="You can choose to name your AS3 class differently than your server side file (and keep object mapping safe)." x="379" y="95"/>
+		<view:HelpIcon toolTip="edit your server side class file package name (useful for PHP)." x="379" y="69"/>
+<!--		
+		<mx:Button label="Cancel" 
+			click="PopUpManager.removePopUp(this);" 
+			icon="@Embed(source='../../../assets/cancel.png')" x="333" y="408"/>
+		<mx:Button enabled="{currentClassFile!=null}" 
+			label="Finish" click="create()" 
+			icon="@Embed(source='../../../assets/accept.png')" x="337" y="384"/>		
+-->	
+</OperationDialog>

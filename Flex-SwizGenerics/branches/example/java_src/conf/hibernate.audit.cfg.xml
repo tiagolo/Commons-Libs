@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 		<property name="org.hibernate.envers.default_schema">app_AUD</property> -->
+		<property name="org.hibernate.envers.audit_strategy">org.hibernate.envers.strategy.ValidityAuditStrategy</property>
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-delete"/>
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="pre-collection-update"/>
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="pre-collection-remove"/>
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-collection-recreate"/>
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,12 @@
+package *DAOPACKAGE*;
+
+import org.springframework.stereotype.Repository;
+
+import br.pro.tiagolopes.dao.generic.GenericDAOHibernate;
+
+import *MODELPACKAGE*.*VO*;
+
+@Repository("*VO*Dao")
+public class *VO*DaoHibernate extends GenericDAOHibernate<*VO*> implements *VO*Dao {
+
+}

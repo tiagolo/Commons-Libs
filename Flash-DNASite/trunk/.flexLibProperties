@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties version="1">
+  <includeClasses>
+    <classEntry path="com.tiagolo.display.CustomMovieClip"/>
+    <classEntry path="com.tiagolo.display.CustomSprite"/>
+    <classEntry path="com.tiagolo.list.BaseListRender"/>
+    <classEntry path="com.tiagolo.list.HList"/>
+    <classEntry path="com.tiagolo.list.ImageRender"/>
+    <classEntry path="com.tiagolo.text.TextInput"/>
+    <classEntry path="com.tiagolo.text.TextStyleClass"/>
+    <classEntry path="com.tiagolo.utils.LoadingCircle"/>
+    <classEntry path="com.tiagolo.utils.ObserverArray"/>
+    <classEntry path="com.tiagolo.utils.PopUpManager"/>
+    <classEntry path="com.tiagolo.utils.TopLevels"/>
+    <classEntry path="com.tiagolo.list.events.ListEvent"/>
+    <classEntry path="com.tiagolo.utils.Binding"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

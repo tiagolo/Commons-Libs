@@ -1,0 +1,18 @@
+package *CONTROLPACKAGE*
+{
+	import com.adobe.cairngorm.control.FrontController;
+	import *EVENTSPACKAGE*.*;
+	import *COMMANDPACKAGE*.*;
+
+	public class FController extends FrontController
+	{
+		public function FController()
+		{
+			
+			//ADD COMMANDS HERE
+*CMDASSO*
+
+		}
+		
+	}
+}

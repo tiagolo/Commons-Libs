@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" version="1">
+  <includeClasses>
+    <classEntry path="Consts"/>
+    <classEntry path="com.adobe.data.security.EncryptionKeyGenerator"/>
+    <classEntry path="com.adobe.flex.extras.controls.MaskedTextInput"/>
+    <classEntry path="com.adobe.flex.extras.skins.MTISkin"/>
+    <classEntry path="com.darronschall.serialization.ObjectTranslator"/>
+    <classEntry path="com.hillelcoren.assets.skins.BlankSkin"/>
+    <classEntry path="com.hillelcoren.assets.skins.FacebookSkin"/>
+    <classEntry path="com.hillelcoren.assets.skins.MacMailSkin"/>
+    <classEntry path="com.hillelcoren.components.AdvancedAutoComplete"/>
+    <classEntry path="com.hillelcoren.components.AutoComplete"/>
+    <classEntry path="com.hillelcoren.components.CloseableTitleWindow"/>
+    <classEntry path="com.hillelcoren.components.ListBuilder"/>
+    <classEntry path="com.hillelcoren.components.PromptTextInput"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.ActionsMenu"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.Browser"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.BrowserItemRenderer"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.DropDownItemRenderer"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.EditableItem"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.FlowBox"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.IconButton"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.ListBuilderBrowser"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.MultiSelect"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.SelectedItem"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.classes.ShorterTextInput"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.interfaces.IBrowser"/>
+    <classEntry path="com.hillelcoren.components.autoComplete.interfaces.iComboItem"/>
+    <classEntry path="com.hillelcoren.utils.ArrayCollectionUtils"/>
+    <classEntry path="com.hillelcoren.utils.KeyboardUtil"/>
+    <classEntry path="com.hillelcoren.utils.StringUtils"/>
+    <classEntry path="com.rd.widget.cascadelist.CascadeList"/>
+    <classEntry path="com.rd.widget.cascadelist.CascadeListItemSelectedEvent"/>
+    <classEntry path="com.rd.widget.cascadelist.DynamicList"/>
+    <classEntry path="com.tiagolo.controls.CampoData"/>
+    <classEntry path="com.tiagolo.controls.Chooser"/>
+    <classEntry path="com.tiagolo.controls.ComboBox"/>
+    <classEntry path="com.tiagolo.controls.DataGrid"/>
+    <classEntry path="com.tiagolo.controls.DateField"/>
+    <classEntry path="com.tiagolo.controls.NestedTabBar"/>
+    <classEntry path="com.tiagolo.controls.NumericStepper"/>
+    <classEntry path="com.tiagolo.controls.PictureInput"/>
+    <classEntry path="com.tiagolo.controls.SearchBox"/>
+    <classEntry path="com.tiagolo.controls.TimeComboBox"/>
+    <classEntry path="com.tiagolo.controls.grid.CheckBoxDataGrid"/>
+    <classEntry path="com.tiagolo.controls.grid.CheckBoxList"/>
+    <classEntry path="com.tiagolo.controls.grid.CheckBoxRenderer"/>
+    <classEntry path="com.tiagolo.controls.grid.GridEvent"/>
+    <classEntry path="com.tiagolo.skins.TextInputSkin"/>
+    <classEntry path="com.tiagolo.utils.DragBitmap"/>
+    <classEntry path="com.tiagolo.utils.DragExcel"/>
+    <classEntry path="com.tiagolo.utils.SQLUtil"/>
+    <classEntry path="com.tiagolo.utils.TabManager"/>
+    <classEntry path="com.tiagolo.utils.TopLevels"/>
+    <classEntry path="net.hires.debug.Stats"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="assets/img/top_left.png" sourcePath="assets/img/top_left.png"/>
+    <resourceEntry destPath="assets/img/button_bar_middle_over.png" sourcePath="assets/img/button_bar_middle_over.png"/>
+    <resourceEntry destPath="assets/img/orgchartLeftToRight.png" sourcePath="assets/img/orgchartLeftToRight.png"/>
+    <resourceEntry destPath="assets/img/tab_skin.png" sourcePath="assets/img/tab_skin.png"/>
+    <resourceEntry destPath="assets/img/body_middle.png" sourcePath="assets/img/body_middle.png"/>
+    <resourceEntry destPath="assets/img/search.png" sourcePath="assets/img/search.png"/>
+    <resourceEntry destPath="assets/img/skin_source.png" sourcePath="assets/img/skin_source.png"/>
+    <resourceEntry destPath="assets/img/button_bar_last.png" sourcePath="assets/img/button_bar_last.png"/>
+    <resourceEntry destPath="assets/img/icon_minimize.png" sourcePath="assets/img/icon_minimize.png"/>
+    <resourceEntry destPath="assets/img/icon_orgchart.png" sourcePath="assets/img/icon_orgchart.png"/>
+    <resourceEntry destPath="assets/img/orgchartRightToLeft.png" sourcePath="assets/img/orgchartRightToLeft.png"/>
+    <resourceEntry destPath="assets/img/lock.png" sourcePath="assets/img/lock.png"/>
+    <resourceEntry destPath="assets/img/icon_restore.png" sourcePath="assets/img/icon_restore.png"/>
+    <resourceEntry destPath="assets/img/icon_minimize_over.png" sourcePath="assets/img/icon_minimize_over.png"/>
+    <resourceEntry destPath="assets/img/icon_grip.png" sourcePath="assets/img/icon_grip.png"/>
+    <resourceEntry destPath="assets/img/icon_close10.png" sourcePath="assets/img/icon_close10.png"/>
+    <resourceEntry destPath="assets/img/app_skin.png" sourcePath="assets/img/app_skin.png"/>
+    <resourceEntry destPath="assets/img/icon_opportunity.png" sourcePath="assets/img/icon_opportunity.png"/>
+    <resourceEntry destPath="assets/img/icon_account.png" sourcePath="assets/img/icon_account.png"/>
+    <resourceEntry destPath="assets/img/vthumb.png" sourcePath="assets/img/vthumb.png"/>
+    <resourceEntry destPath="assets/img/icon_minimize16.png" sourcePath="assets/img/icon_minimize16.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/down.png" sourcePath="com/hillelcoren/assets/icons/down.png"/>
+    <resourceEntry destPath="assets/img/male_user.png" sourcePath="assets/img/male_user.png"/>
+    <resourceEntry destPath="assets/img/blank.png" sourcePath="assets/img/blank.png"/>
+    <resourceEntry destPath="assets/img/combobox_over_skin.png" sourcePath="assets/img/combobox_over_skin.png"/>
+    <resourceEntry destPath="assets/img/male_user_gray_sm.png" sourcePath="assets/img/male_user_gray_sm.png"/>
+    <resourceEntry destPath="com/hillelcoren/components/icon.png" sourcePath="com/hillelcoren/components/icon.png"/>
+    <resourceEntry destPath="assets/img/MyriadWeb.ttf" sourcePath="assets/img/MyriadWeb.ttf"/>
+    <resourceEntry destPath="assets/img/button_bar_middle.png" sourcePath="assets/img/button_bar_middle.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/top.png" sourcePath="com/hillelcoren/assets/icons/top.png"/>
+    <resourceEntry destPath="defaults.css" sourcePath="defaults.css"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/remove.png" sourcePath="com/hillelcoren/assets/icons/remove.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/right.png" sourcePath="com/hillelcoren/assets/icons/right.png"/>
+    <resourceEntry destPath="assets/img/icon_maximize_over16.png" sourcePath="assets/img/icon_maximize_over16.png"/>
+    <resourceEntry destPath="assets/img/icon_close_over10.png" sourcePath="assets/img/icon_close_over10.png"/>
+    <resourceEntry destPath="assets/img/bottom_left.png" sourcePath="assets/img/bottom_left.png"/>
+    <resourceEntry destPath="assets/img/icon_dashboard.png" sourcePath="assets/img/icon_dashboard.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/actionsUp.png" sourcePath="com/hillelcoren/assets/icons/actionsUp.png"/>
+    <resourceEntry destPath="assets/img/button_bar_first.png" sourcePath="assets/img/button_bar_first.png"/>
+    <resourceEntry destPath="assets/img/icon_resize.gif" sourcePath="assets/img/icon_resize.gif"/>
+    <resourceEntry destPath="assets/img/icon_home.png" sourcePath="assets/img/icon_home.png"/>
+    <resourceEntry destPath="assets/img/icon_maximize_over.png" sourcePath="assets/img/icon_maximize_over.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/up.png" sourcePath="com/hillelcoren/assets/icons/up.png"/>
+    <resourceEntry destPath="assets/img/icon_close_over16.png" sourcePath="assets/img/icon_close_over16.png"/>
+    <resourceEntry destPath="assets/img/icon_excel.png" sourcePath="assets/img/icon_excel.png"/>
+    <resourceEntry destPath="assets/img/button_bar_last_over.png" sourcePath="assets/img/button_bar_last_over.png"/>
+    <resourceEntry destPath="assets/img/cursor_leftright.png" sourcePath="assets/img/cursor_leftright.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/bottom.png" sourcePath="com/hillelcoren/assets/icons/bottom.png"/>
+    <resourceEntry destPath="assets/img/hCursor.gif" sourcePath="assets/img/hCursor.gif"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/actionsDown.png" sourcePath="com/hillelcoren/assets/icons/actionsDown.png"/>
+    <resourceEntry destPath="assets/img/combobox_down_skin.png" sourcePath="assets/img/combobox_down_skin.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/clear.png" sourcePath="com/hillelcoren/assets/icons/clear.png"/>
+    <resourceEntry destPath="assets/img/bottom_right.png" sourcePath="assets/img/bottom_right.png"/>
+    <resourceEntry destPath="assets/img/top_right.png" sourcePath="assets/img/top_right.png"/>
+    <resourceEntry destPath="assets/img/thumb.png" sourcePath="assets/img/thumb.png"/>
+    <resourceEntry destPath="assets/img/icon_close16.png" sourcePath="assets/img/icon_close16.png"/>
+    <resourceEntry destPath="assets/img/icon_contact.png" sourcePath="assets/img/icon_contact.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/left.png" sourcePath="com/hillelcoren/assets/icons/left.png"/>
+    <resourceEntry destPath="assets/img/icon_pulldown.png" sourcePath="assets/img/icon_pulldown.png"/>
+    <resourceEntry destPath="assets/img/icon_minimize_over16.png" sourcePath="assets/img/icon_minimize_over16.png"/>
+    <resourceEntry destPath="assets/img/vtrack.png" sourcePath="assets/img/vtrack.png"/>
+    <resourceEntry destPath="assets/img/button_over_skin.png" sourcePath="assets/img/button_over_skin.png"/>
+    <resourceEntry destPath="assets/img/track.png" sourcePath="assets/img/track.png"/>
+    <resourceEntry destPath="assets/img/icon_pulldown_over.png" sourcePath="assets/img/icon_pulldown_over.png"/>
+    <resourceEntry destPath="assets/img/icon_synchronize.png" sourcePath="assets/img/icon_synchronize.png"/>
+    <resourceEntry destPath="assets/img/body_right.png" sourcePath="assets/img/body_right.png"/>
+    <resourceEntry destPath="assets/img/both.gif" sourcePath="assets/img/both.gif"/>
+    <resourceEntry destPath="assets/img/telephone_go.png" sourcePath="assets/img/telephone_go.png"/>
+    <resourceEntry destPath="assets/img/camera_edit.png" sourcePath="assets/img/camera_edit.png"/>
+    <resourceEntry destPath="assets/img/top_middle.png" sourcePath="assets/img/top_middle.png"/>
+    <resourceEntry destPath="assets/img/online.png" sourcePath="assets/img/online.png"/>
+    <resourceEntry destPath="assets/img/tabnav_skin.png" sourcePath="assets/img/tabnav_skin.png"/>
+    <resourceEntry destPath="assets/img/Untitled-6.png" sourcePath="assets/img/Untitled-6.png"/>
+    <resourceEntry destPath="assets/img/top_separator.png" sourcePath="assets/img/top_separator.png"/>
+    <resourceEntry destPath="assets/img/icon_grid.png" sourcePath="assets/img/icon_grid.png"/>
+    <resourceEntry destPath="assets/img/dialog_skin.png" sourcePath="assets/img/dialog_skin.png"/>
+    <resourceEntry destPath="assets/img/calendar.png" sourcePath="assets/img/calendar.png"/>
+    <resourceEntry destPath="assets/img/icon_image.png" sourcePath="assets/img/icon_image.png"/>
+    <resourceEntry destPath="assets/img/icon_chart.png" sourcePath="assets/img/icon_chart.png"/>
+    <resourceEntry destPath="assets/img/button_skin.png" sourcePath="assets/img/button_skin.png"/>
+    <resourceEntry destPath="assets/img/male_user_gray.png" sourcePath="assets/img/male_user_gray.png"/>
+    <resourceEntry destPath="com/hillelcoren/assets/icons/actionsOver.png" sourcePath="com/hillelcoren/assets/icons/actionsOver.png"/>
+    <resourceEntry destPath="assets/img/icon_plus.png" sourcePath="assets/img/icon_plus.png"/>
+    <resourceEntry destPath="assets/img/icon_maximize16.png" sourcePath="assets/img/icon_maximize16.png"/>
+    <resourceEntry destPath="assets/img/offline.png" sourcePath="assets/img/offline.png"/>
+    <resourceEntry destPath="assets/img/button_bar_first_over.png" sourcePath="assets/img/button_bar_first_over.png"/>
+    <resourceEntry destPath="assets/img/orgchartTopToBottom.png" sourcePath="assets/img/orgchartTopToBottom.png"/>
+    <resourceEntry destPath="assets/img/icon_close14.png" sourcePath="assets/img/icon_close14.png"/>
+    <resourceEntry destPath="assets/img/orgchartBottomToTop.png" sourcePath="assets/img/orgchartBottomToTop.png"/>
+    <resourceEntry destPath="assets/img/icon_maximize.png" sourcePath="assets/img/icon_maximize.png"/>
+    <resourceEntry destPath="assets/img/RingToneMarimba.mp3" sourcePath="assets/img/RingToneMarimba.mp3"/>
+    <resourceEntry destPath="assets/img/icon_search.png" sourcePath="assets/img/icon_search.png"/>
+    <resourceEntry destPath="assets/img/icon_close.png" sourcePath="assets/img/icon_close.png"/>
+    <resourceEntry destPath="assets/img/textinput_skin.png" sourcePath="assets/img/textinput_skin.png"/>
+    <resourceEntry destPath="assets/img/camera.png" sourcePath="assets/img/camera.png"/>
+    <resourceEntry destPath="assets/img/tab_selected_skin.png" sourcePath="assets/img/tab_selected_skin.png"/>
+    <resourceEntry destPath="assets/img/body_left.png" sourcePath="assets/img/body_left.png"/>
+    <resourceEntry destPath="assets/img/cross.png" sourcePath="assets/img/cross.png"/>
+    <resourceEntry destPath="assets/img/headerbg.png" sourcePath="assets/img/headerbg.png"/>
+    <resourceEntry destPath="assets/img/combobox_skin.png" sourcePath="assets/img/combobox_skin.png"/>
+    <resourceEntry destPath="assets/img/tab_over_skin.png" sourcePath="assets/img/tab_over_skin.png"/>
+    <resourceEntry destPath="assets/img/vCursor.gif" sourcePath="assets/img/vCursor.gif"/>
+    <resourceEntry destPath="assets/img/icon_activity.png" sourcePath="assets/img/icon_activity.png"/>
+    <resourceEntry destPath="assets/img/bottom_middle.png" sourcePath="assets/img/bottom_middle.png"/>
+    <resourceEntry destPath="assets/img/icon_close_over.png" sourcePath="assets/img/icon_close_over.png"/>
+  </includeResources>
+  <namespaceManifests/>
+</flexLibProperties>

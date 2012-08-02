@@ -1,0 +1,10 @@
+package *SERVICEPACKAGE*;
+
+import br.pro.tiagolopes.services.generic.GenericService;
+
+import *DAOPACKAGE*.*VO*Dao;
+import *MODELPACKAGE*.*VO*;
+
+public interface *VO*Service extends GenericService<*VO*, *VO*Dao>{
+
+}

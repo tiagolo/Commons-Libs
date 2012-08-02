@@ -1,0 +1,25 @@
+package *BUSINESSPACKAGE*
+{
+	import mx.rpc.IResponder;
+	import mx.rpc.events.FaultEvent;
+	import mx.rpc.events.ResultEvent;
+	import mx.rpc.remoting.mxml.RemoteObject;
+	import mx.rpc.AbstractOperation;    
+	import *VOPACKAGE*.*;
+    
+	public class *SERVICENAME*Delegate
+	{
+		private var responder : IResponder;
+		private var service : Object;
+		
+		public function *SERVICENAME*Delegate(pResponder : IResponder )
+		{
+*REMOTEOBJECT*
+			responder = pResponder;
+		}   
+
+*DELEGATEMETHODS*			
+
+	}
+
+}	

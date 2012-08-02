@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mate:EventMap xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:mate="http://mate.asfusion.com/">
+    
+    <mx:Script>
+        <![CDATA[
+			import com.sante.business.*;
+			import com.sante.events.ItemEvent;
+			import com.sante.views.item.ItemView;
+        ]]>
+    </mx:Script>
+    
+    <mate:Debugger level="{Debugger.ALL}"/>
+    
+	<mate:Injectors target="{ItemView}">
+		<mate:ListenerInjector eventType="{ItemEvent.STATE_CHANGE}" method="stateChangeHandler"/>
+        <mate:PropertyInjector targetKey="listaGrupos" source="{GrupoItemManager}" sourceKey="lista" />
+        <mate:PropertyInjector targetKey="item" source="{ItemManager}" sourceKey="item" />
+        <mate:PropertyInjector targetKey="lista" source="{ItemManager}" sourceKey="lista" />
+    </mate:Injectors>
+	
+</mate:EventMap>

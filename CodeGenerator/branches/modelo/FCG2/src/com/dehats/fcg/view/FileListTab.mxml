@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="380"  
+	xmlns:ns1="codegen.view.*"
+	xmlns:ns2="com.dehats.fcg.view.*" 	
+	>
+	
+
+	<mx:Metadata>
+		[Event(name="fileSelection", type="com.dehats.fcg.events.FileSelectionEvent")]		
+		[Event(name="fileDeletion", type="com.dehats.fcg.events.FileDeletionEvent")]		
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.events.FileDeletionEvent;
+			import com.dehats.fcg.events.FileSelectionEvent;
+			import com.dehats.fcg.events.DragFileEvent;
+		
+			import mx.events.CloseEvent;
+			import mx.controls.Alert;
+			import mx.core.UITextField;
+			import mx.managers.DragManager;
+			import mx.events.DragEvent;
+			import codegen.generation.GeneratedFile;
+			import mx.collections.ArrayCollection;
+		
+			[Bindable]
+			private var _selectedFiles:Array;
+			
+			[Bindable]
+			public var rootDir:File;
+						
+			[Bindable]
+			public var operationList:Array;
+			
+
+ 			private function removeSelection():void
+			{
+				
+				Alert.show("Are you sure you want to delete these files? It is recommended to delete files you don't need only once you've copied them to your drive, because deletion during the code scaffholding may result in unexpected behaviors !",
+							"Warning",
+							Alert.YES| Alert.CANCEL,
+							null,
+							deleteFilesAnswer);				
+
+			}
+			
+			private function deleteFilesAnswer(pCloseEvt:CloseEvent):void
+			{
+				if(pCloseEvt.detail==Alert.YES)
+				{
+					dispatchEvent( new FileDeletionEvent(FileDeletionEvent.EVENT_FILEDELETION, fileTree.selectedItems));
+				}
+			}
+			
+			private function selectionChange(pList:Array):void
+			{
+				dispatchEvent(new FileSelectionEvent(FileSelectionEvent.EVENT_FILESELECTION, pList) );	
+			}
+			
+			private function startingDrag(pEvt:DragEvent=null):void
+			{
+				new DragFileEvent(DragFileEvent.EVENT_START_DRAG_OUT, this as InteractiveObject).dispatch()							
+			}
+			
+			public function updateTree():void
+			{
+				if(fileTree==null) return ;
+
+				fileTree.directory = fileTree.directory;
+				
+				fileTree.refresh();
+				
+				fileTree.validateNow();								
+			}
+			
+			public function set selectedFiles(pArr:Array):void
+			{
+
+				updateTree();	
+				
+			}
+		
+		]]>
+	</mx:Script>
+		
+   	<mx:Label x="10" y="10" text="Generated Files" click=" updateTree()" styleName="SmallTitle"/>
+   	<ns2:HelpIcon toolTip="These generated files have not been created on your drive yet. To use them, just drag'n drop them or click the 'Publish files' buttons." x="110" y="10"/>
+	
+	<mx:FileSystemTree id="fileTree" left="10" top="34" bottom="10" openDuration="0"
+		dragEnabled="true"
+		dragStart="startingDrag(); event.preventDefault()"
+	   	allowMultipleSelection="true"
+	   	change="selectionChange(event.target.selectedItems)"
+	   	directory="{rootDir}" right="213"/>
+   		
+
+	<mx:Button label="Delete selected files" enabled="{ fileTree.selectedItems.length>0}" bottom="10" 
+		icon="{ AssetManager.deleteIcon }"
+		click=" removeSelection();" right="22" width="180"/>
+	<mx:HRule right="24" width="180" bottom="40"/>
+	<ns2:OperationList right="10" top="34" bottom="46" width="195"
+		operationsData="{ operationList}">
+	</ns2:OperationList>
+   	
+
+
+</mx:Canvas>

@@ -1,0 +1,9 @@
+package *DAOPACKAGE*;
+
+import br.pro.tiagolopes.dao.generic.GenericDAO;
+
+import *MODELPACKAGE*.*VO*;
+
+public interface *VO*Dao extends GenericDAO<*VO*>{
+
+}

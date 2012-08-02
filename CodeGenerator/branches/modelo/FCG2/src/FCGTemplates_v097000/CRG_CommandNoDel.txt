@@ -1,0 +1,42 @@
+package *PACKAGE*command
+{
+	import com.adobe.cairngorm.control.CairngormEvent;
+	import com.adobe.cairngorm.commands.ICommand;
+	import com.adobe.cairngorm.business.ServiceLocator;
+	import *PACKAGE*model.ModelLocator;	
+	import mx.rpc.IResponder;
+	import mx.rpc.remoting.RemoteObject;
+	import mx.rpc.AsyncToken;
+	import mx.rpc.events.FaultEvent;
+	
+*IMPORTS*
+
+	public class *CMDNAME*Command *EXTSUPERCLASS* implements ICommand, IResponder
+	{
+		public function execute(event:CairngormEvent):void
+		{
+			//cast as event type
+						
+			var service:RemoteObject = ServiceLocator.getInstance().getRemoteObject("*SERVICENAME*");
+			
+			var r:AsyncToken = service.*METHODNAME*(*METHODARGS*);
+			r.addResponder(this);
+			
+		}
+		
+		public function result(data:Object):void
+		{
+			var returnedData:Object = data.result;
+			var appModel:ModelLocator = ModelLocator.getInstance();
+			// Update Model here
+		}
+		
+		public function fault(event:Object):void
+		{
+			var faultEvt:FaultEvent = event as FaultEvent;
+			// Error Management goes here 
+			// trace(faultEvt.fault.faultString);
+		}
+		
+	}
+}

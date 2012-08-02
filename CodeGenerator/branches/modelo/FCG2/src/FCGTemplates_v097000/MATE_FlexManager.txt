@@ -1,0 +1,14 @@
+package *BUSINESSPACKAGE*
+{
+	import *MODELPACKAGE*.*VO*;
+	
+	import flash.utils.getQualifiedClassName;
+
+	public class *VO*Manager extends GenericManager
+	{
+		public function *VO*Manager()
+		{
+			super("*LC_VO*Service",getQualifiedClassName(*VO*));
+		}
+	}
+}

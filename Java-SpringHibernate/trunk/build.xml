@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CommonsLibs-SpringHibernate" default="deploy">
+	
+	<loadproperties srcfile="build.properties"/>
+	
+	
+	<target name="deploy">
+		<delete file="bin/${ant.project.name}-${version}.jar"/>
+		<jar destfile="bin/${ant.project.name}-${version}.jar" basedir="bin" ></jar>
+	</target>
+</project>

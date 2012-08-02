@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" version="1">
+  <includeClasses>
+    <classEntry path="codegen.analysis.CSParser"/>
+    <classEntry path="codegen.analysis.ICodeParser"/>
+    <classEntry path="codegen.analysis.JavaParser"/>
+    <classEntry path="codegen.analysis.PHPParser"/>
+    <classEntry path="codegen.analysis.PseudoClass"/>
+    <classEntry path="codegen.analysis.PseudoClassMethod"/>
+    <classEntry path="codegen.analysis.PseudoVariable"/>
+    <classEntry path="codegen.analysis.RemoteService"/>
+    <classEntry path="codegen.analysis.SQLDBData"/>
+    <classEntry path="codegen.analysis.SQLStructureParser"/>
+    <classEntry path="codegen.analysis.SQLTable"/>
+    <classEntry path="codegen.analysis.SQLTableField"/>
+    <classEntry path="codegen.generation.CairngormGenManager"/>
+    <classEntry path="codegen.generation.CairngormGenerator"/>
+    <classEntry path="codegen.generation.FlexGenManager"/>
+    <classEntry path="codegen.generation.FlexGenerator"/>
+    <classEntry path="codegen.generation.GeneratedFile"/>
+    <classEntry path="codegen.generation.IClientGenManager"/>
+    <classEntry path="codegen.generation.IGenManager"/>
+    <classEntry path="codegen.generation.IServerGenManager"/>
+    <classEntry path="codegen.generation.PHPGenManager"/>
+    <classEntry path="codegen.generation.PHPGenerator"/>
+    <classEntry path="codegen.generation.PackageConfig"/>
+    <classEntry path="codegen.generation.PureMVCGenManager"/>
+    <classEntry path="codegen.generation.PureMVCGenerator"/>
+    <classEntry path="codegen.generation.TemplateManager"/>
+    <classEntry path="codegen.utils.StringTools"/>
+    <classEntry path="codegen.generation.TiagoloGenManager"/>
+    <classEntry path="codegen.generation.TiagoloGenerator"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

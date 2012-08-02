@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationDialog xmlns="com.dehats.fcg.view.*"  		
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="234" 
+	height="84"
+	creationComplete=" focusManager.setFocus(ti)">
+
+	<mx:Script>
+		<![CDATA[
+			import codegen.generation.FlexGenManager;
+			import codegen.generation.GeneratedFile;
+			import mx.managers.PopUpManager;
+
+			override public function create():void
+			{			
+				var file:GeneratedFile = ( genManager as FlexGenManager).createSingleton( ti.text);
+				
+				setGeneratedFiles([file]);
+				
+			}			
+			
+		]]>
+	</mx:Script> 
+
+
+	<mx:Label x="10" y="12" text="Name"/>
+	<mx:TextInput id="ti" x="55" y="10" enter=" create()"/>
+<!--	
+		<mx:Button label="Create"
+			click=" create()" x="182" y="96"/>
+		<mx:Button label="Cancel" x="95.5" y="96"/>
+	-->
+</OperationDialog>

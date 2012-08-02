@@ -1,0 +1,29 @@
+package *COMMANDPACKAGE*
+{
+	import *MAINPACKAGE*.ApplicationFacade;
+	import org.puremvc.as3.interfaces.ICommand;
+	import org.puremvc.as3.interfaces.INotification;
+	import org.puremvc.as3.patterns.command.SimpleCommand;
+	import *MODELPACKAGE*.*;
+	import *COMPONENTSPACKAGE*.*;
+	import *VIEWPACKAGE*.*;
+	
+	public class StartUpCommand extends SimpleCommand implements ICommand
+	{
+		
+		override public function execute(notification:INotification):void
+		{
+			
+*REGISTERPROXIES*
+
+			var app:*MAINVIEW* = notification.getBody() as *MAINVIEW*;
+
+*REGISTERMEDIATORS*
+			
+			// Send first Notification here...
+			//sendNotification(ApplicationFacade.SOME_NOTIFICATION);
+		
+		}
+		
+	}
+}

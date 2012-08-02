@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ns:ViewStack xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			  xmlns:s="library://ns.adobe.com/flex/spark" 
+			  xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ns="http://www.commonslibs.org/flex/cl"
+			  label="Família" xmlns:familia="com.app.views.familia.*">
+	
+	<fx:Metadata>
+		[Inject(source="familiaManager.currentState", destination="selectedChildByName" ,bind="true")]
+	</fx:Metadata>
+
+	<familia:FamiliaList name="list" width="100%" height="100%"/>
+	<familia:FamiliaEdit name="edit" width="100%" height="100%"/>
+</ns:ViewStack>

@@ -1,0 +1,13 @@
+package *MODELPACKAGE*
+{
+*IMPORTS*
+	
+	[RemoteClass(alias="*QUALIFIED_REMOTE_CLASS*")]	
+	[Bindable]
+	public class *VO*
+	{
+*PROPERTIES*
+
+*GETTERSETTERS*
+	}
+}

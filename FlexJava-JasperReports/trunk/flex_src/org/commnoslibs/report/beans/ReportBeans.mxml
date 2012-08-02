@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swiz:BeanProvider xmlns:business="org.commnoslibs.report.business.*"
+				   xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns:swiz="http://swiz.swizframework.org" xmlns:beans="org.commnoslibs.report.beans.*" xmlns:controllers="org.commnoslibs.report.controllers.*">
+	<mx:Script>
+		<![CDATA[
+			import org.commonsLibs.swiz.business.AlertManager;
+		]]>
+	</mx:Script>
+
+	<mx:String id="contextRoot"/>
+
+	<mx:RemoteObject id="reportService"
+					 destination="reportService"
+					 fault="AlertManager.faultHandler(event)"
+					 showBusyCursor="true"/>
+	<mx:RemoteObject id="reportAuditService"
+					 destination="reportAuditService"
+					 fault="AlertManager.faultHandler(event)"
+					 showBusyCursor="true"/>
+	<mx:RemoteObject id="imageService"
+					 destination="imageService"
+					 fault="AlertManager.faultHandler(event)"
+					 showBusyCursor="true"/>
+
+	<controllers:ReportController id="reportController" contextRoot="{contextRoot}" service="{reportService}"/>
+</swiz:BeanProvider>

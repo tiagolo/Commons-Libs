@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<commonslibs:ViewStack xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:commonslibs="http://www.commonslibs.org/flex/cl"
+			  xmlns:cor="com.app.views.cor.*" 
+			  label="cor"
+			  creationPolicy="all">
+	
+	<fx:Metadata>
+		[Inject(source="corManager.currentState", destination="selectedChildByName" ,bind="true")]
+	</fx:Metadata>
+	
+	<cor:CorList id="list" name="list" width="100%" height="100%" />
+	<cor:CorEdit id="edit" name="edit" width="100%" height="100%" />
+	
+</commonslibs:ViewStack>

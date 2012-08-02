@@ -1,0 +1,55 @@
+/* CSS file */
+
+FormHeading
+{
+	font-size: 38;
+	font-weight: bold;
+	font-anti-alias-type:advanced;
+	color: #919191;
+}
+
+Box
+{
+	borderSkin:ClassReference("resources.skins.ErrorBorder");	
+}
+
+
+Button.Voltar
+{
+	skin: Embed(source='resources/img/Icons_36_Voltar.png');
+}
+
+Button.Imprimir
+{
+	skin: Embed(source='resources/img/btnImprimir.png');
+}
+
+Button.ExportarExcel
+{
+	skin: Embed(source='resources/img/btnExportarExcel.png');
+}
+
+Button.ExportarCSV
+{
+	skin: Embed(source='resources/img/btnExportarCSV.png');
+}
+
+Button.ImageManager
+{
+	skin: Embed(source='resources/img/btnImageManager.png');
+}
+
+Button.Auditoria
+{
+	skin: Embed(source='resources/img/btnAuditoria.png');
+}
+
+Button.Adicionar
+{
+	skin: Embed(source='resources/img/adicionar.png');
+}
+
+Button.Remover
+{
+	skin: Embed(source='resources/img/excluir.png');
+}

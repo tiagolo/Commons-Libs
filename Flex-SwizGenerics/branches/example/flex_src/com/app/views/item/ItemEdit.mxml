@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:s="library://ns.adobe.com/flex/spark">
+
+	<mx:Metadata>
+		[Inject(source="itemManager.listaAudit",destination="grid.dataProvider", bind="true")]
+		[Inject(source="familiaManager.dataProvider",destination="cbFamilia.dataProvider", bind="true")]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import com.app.events.ItemEvent;
+			import com.app.model.Item;
+
+			[Bindable]
+			[Inject(source="itemManager.item", bind="true")]
+			public var item:Item;
+
+			protected function btnSalvar_clickHandler(event:MouseEvent):void
+			{
+				var itemEvent:ItemEvent = new ItemEvent(ItemEvent.SAVE);
+				itemEvent.item = item;
+				itemEvent.validators = validators;
+				dispatchEvent(itemEvent);
+			}
+
+			protected function btnCancelar_clickHandler(event:MouseEvent):void
+			{
+				dispatchEvent(new ItemEvent(ItemEvent.CANCEL));
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Array id="validators">
+		<!-- Implementar Validators -->
+	</mx:Array>
+
+	<s:Form width="100%">
+		<s:FormHeading label="Cadastro de Item"/>
+		<s:FormItem label="Nome" enabled="true">
+			<s:TextInput id="txNome" text="@{item.nome}"/>
+		</s:FormItem>
+		<s:FormItem label="Família">
+			<s:ComboBox id="cbFamilia" labelField="nome" selectedItem="@{item.familia}"/>
+		</s:FormItem>
+	</s:Form>
+	<s:DataGrid id="grid" width="100%" height="100%">
+		<s:columns>
+			<s:ArrayList>
+				<s:GridColumn dataField="id" headerText="REV"/>
+				<s:GridColumn dataField="nome" headerText="Nome"/>
+				<s:GridColumn dataField="familia.nome" headerText="Familia"/>
+			</s:ArrayList>
+		</s:columns>
+	</s:DataGrid>
+	<mx:HBox>
+		<mx:Button id="btnSalvar" toolTip="Ctrl + S" buttonMode="true" label="Salvar" click="btnSalvar_clickHandler(event)"/>
+		<mx:LinkButton id="btnCancelar" toolTip="Esc" buttonMode="true" label="Cancelar" click="btnCancelar_clickHandler(event)"/>
+	</mx:HBox>
+</mx:VBox>

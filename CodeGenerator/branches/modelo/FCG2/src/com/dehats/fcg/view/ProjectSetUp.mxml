@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" horizontalCenter="0" verticalCenter="0" layout="absolute" xmlns:codegen="codegen.generation.*" height="342"
+	xmlns:ns1="view.*" width="353" xmlns:view="com.dehats.fcg.view.*">
+
+	<mx:Metadata>
+		[Event(name="startProject", type="com.dehats.fcg.events.ProjectEvent")]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import com.dehats.fcg.events.ProjectEvent;
+			import codegen.generation.PureMVCGenManager;
+			import codegen.generation.CairngormGenManager;
+			import codegen.generation.PHPGenManager;
+			import codegen.generation.FlexGenManager;
+			import flash.utils.getDefinitionByName;
+			import codegen.generation.IGenManager;
+			import codegen.generation.PackageConfig;
+						
+
+			private function confirm(pEvt:Event=null):void
+			{			
+				 new ProjectEvent(ProjectEvent.EVENT_PROJECT_START, setUp.genManager, setUp.operationList, setUp.packageConfig).dispatch()
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<view:SetUpModule id="setUp"  confirm=" confirm()"/>
+			
+	<mx:ControlBar horizontalAlign="center">
+		<mx:Button id="startBt" 
+			label="Start Project" 
+			click=" confirm()"  
+			icon="{ AssetManager.acceptIcon }"/>
+	</mx:ControlBar>
+	
+</mx:Panel>	

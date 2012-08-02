@@ -1,0 +1,29 @@
+package *SERVICEPACKAGE*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.flex.remoting.RemotingDestination;
+import org.springframework.flex.remoting.RemotingExclude;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.pro.tiagolopes.services.generic.GenericServiceImpl;
+
+import *DAOPACKAGE*.*VO*Dao;
+import *MODELPACKAGE*.*VO*;
+
+@Service("*LC_VO*Service")
+@RemotingDestination
+@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+public class *VO*ServiceImpl extends GenericServiceImpl<*VO*, *VO*Dao> implements *VO*Service{
+
+	@Autowired
+	private *VO*Dao dao;
+	
+	@Override
+	@RemotingExclude
+	public *VO*Dao getDAO() {
+		return dao;
+	}
+
+}

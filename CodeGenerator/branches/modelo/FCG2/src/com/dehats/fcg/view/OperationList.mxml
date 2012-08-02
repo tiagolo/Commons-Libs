@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Label;
+			import flash.utils.getQualifiedClassName;
+			import mx.controls.Alert;
+			import flash.utils.getDefinitionByName;
+			import flash.net.getClassByAlias;
+			import mx.controls.Button;
+						
+			
+			private var _operationsData:Array;
+			
+			public function set operationsData(pData:Array):void
+			{
+				if(pData)
+				{
+					_operationsData = pData;
+					 addButtons();					
+				}
+			}
+			
+			private function addButtons():void
+			{				
+
+				removeChildren();
+				
+				var total:int = _operationsData.length ;
+				
+				for ( var i:int = 0 ; i < total ; i++)
+				{
+					addButton(_operationsData[i] as OperationData);
+				}
+							
+			}
+			
+			
+			private function addButton(btData:OperationData):void
+			{
+				
+				
+				var opBt:OperationButton = new OperationButton();
+				opBt.btLabel = btData.name;
+//				opBt.dialogModule = btData.@d_class ;
+				opBt.helpMsg = btData.description;				
+				opBt.dialogClass = btData.operationClass;
+				
+				addChild(opBt);				
+			}
+			
+			private function removeChildren():void
+			{				
+				while(numChildren>0) removeChild(getChildAt(0));
+			}
+			
+			
+		]]>
+	</mx:Script>
+</mx:VBox>

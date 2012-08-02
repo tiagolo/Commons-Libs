@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="TiagoLibFlex" default="ASDoc">
+	
+	<property name="FLEX_HOME" value="/Applications/Adobe Flash Builder 4/sdks/4.1.0"/>
+	<property name="OUTPUT_DIR" value="./asdoc"/>
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+	
+	<target name="ASDoc">
+		<asdoc output="${OUTPUT_DIR}" lenient="true" failonerror="true"> 
+			<compiler.library-path dir="lib" append="true">
+				<include name="Mate_08_9.swc"/>
+			</compiler.library-path>
+			<compiler.source-path path-element="${FLEX_HOME}/frameworks/projects/air/core/src"/>
+			<compiler.source-path path-element="${FLEX_HOME}/frameworks/projects/airframework/src"/>
+			<compiler.source-path path-element="${FLEX_HOME}/frameworks/projects/flex/src"/>
+			<compiler.source-path path-element="${FLEX_HOME}/frameworks/projects/framework/src"/>
+			<compiler.source-path path-element="${FLEX_HOME}/frameworks/projects/utilities/src"/>
+			<compiler.source-path path-element="src"/> 
+			<doc-namespaces uri="http://www.tiagolopes.pro.br"/>
+			<namespace uri="http://www.tiagolopes.pro.br" manifest="src/manifest.xml"/>  			
+        </asdoc> 
+	</target>
+</project>

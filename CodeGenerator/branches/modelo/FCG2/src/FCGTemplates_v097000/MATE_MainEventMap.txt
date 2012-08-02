@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mate:EventMap
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:mate="http://mate.asfusion.com/">
+	<mx:Script>
+		<![CDATA[
+			import com.asfusion.mate.utils.debug.Debugger;
+			import com.sante.business.*;
+			import com.sante.events.*;
+			
+			import mx.core.Application;
+ 	]]>
+	</mx:Script>
+	<mate:Debugger level="{Debugger.ERROR}"/>
+	
+	<mate:EventHandlers type="{KeyboardEvent.KEY_UP}" debug="false">
+		<mate:InlineInvoker method="{Application.application.mainUI.barraNav.navKeyUpHandler}" arguments="{event}"/>
+	</mate:EventHandlers>
+	
+	<mate:EventHandlers type="{AlertEvent.SELECTION_ERROR}" debug="true">
+		<mate:MethodInvoker generator="{AlertManager}" method="showSelectionAlert"/>
+	</mate:EventHandlers>
+	<mate:EventHandlers type="{AlertEvent.ERROR}" debug="true">
+		<mate:MethodInvoker generator="{AlertManager}" method="showError" arguments="{event.mensagem}"/>
+	</mate:EventHandlers>
+	<mate:EventHandlers type="{AlertEvent.SUCCESS}" debug="true">
+		<mate:MethodInvoker generator="{AlertManager}" method="showSuccess"/>
+	</mate:EventHandlers>
+	
+	<!-- ITEM -->	
+	<mate:EventHandlers type="{ItemEvent.FIND_ALL}" debug="true">
+		<mate:MethodInvoker generator="{ItemManager}" method="findAll" arguments="{[event.item,event.properties,event.validators]}"/>
+	</mate:EventHandlers>
+	<mate:EventHandlers type="{ItemEvent.SAVE}" debug="true">
+		<mate:MethodInvoker generator="{ItemManager}" method="save" arguments="{[event.item,event.validators]}"/>
+	</mate:EventHandlers>
+	<mate:EventHandlers type="{ItemEvent.EDIT}" debug="true">
+		<mate:MethodInvoker generator="{ItemManager}" method="edit" arguments="{event.item}"/>
+	</mate:EventHandlers>
+	<mate:EventHandlers type="{ItemEvent.REMOVE}" debug="true">
+		<mate:MethodInvoker generator="{ItemManager}" method="remove" arguments="{event.item}"/>
+	</mate:EventHandlers>
+	
+	<!-- RELATORIOS -->
+	<mate:EventHandlers type="{ReportEvent.PRINT}" debug="true">
+		<mate:MethodInvoker generator="{ReportManager}" method="print" arguments="{[event.report, event.params]}"/>
+	</mate:EventHandlers>
+</mate:EventMap>

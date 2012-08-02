@@ -1,0 +1,29 @@
+package *EVENTSPACKAGE*
+{
+	import flash.events.Event;
+*IMPORTS*
+
+	public class *CLASS_NAME*Event extends *EVENT_SUPERCLASS*
+	{
+		
+*EVENT_TYPES*
+		
+*PROPERTIES*
+		
+		public function *CLASS_NAME*Event (pType:String, *PROPERTIES_PARAM* pBubbles:Boolean=false, pCancelable:Boolean=false ){
+			
+*PROPERTIES_SET*
+			super(pType, pBubbles, pCancelable);
+			
+		}
+		
+		override public function clone():Event{
+		
+			return new *CLASS_NAME*Event(type,  *PROPERTIES_CLONE* bubbles, cancelable);
+			
+		}
+
+		
+	}
+
+}
