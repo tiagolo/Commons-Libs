@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>CommonsLibs-Generics-Flex-Swiz</artifactId>
+	<packaging>swf</packaging>
+
+	<parent>
+		<artifactId>CommonsLibs-Generics-Flex</artifactId>
+		<groupId>org.commonsLibs</groupId>
+		<version>1.7-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.framework.version}</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>spark</artifactId>
+			<version>${flex.framework.version}</version>
+			<type>swc</type>
+			<scope>theme</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.adobe.flexunit</groupId>
+			<artifactId>flexunit</artifactId>
+			<version>4.0-rc-1</version>
+			<type>swc</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonatype.flexmojos</groupId>
+					<artifactId>flexmojos-maven-plugin</artifactId>
+					<version>${flexmojos.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<extensions>true</extensions>
+				<dependencies>
+					<dependency>
+						<groupId>com.adobe.flex</groupId>
+						<artifactId>compiler</artifactId>
+						<version>${flex.framework.version}</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

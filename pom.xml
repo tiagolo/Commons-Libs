@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <name>CommonsLibs</name>
+  <description>Conjunto de bibliotecas para facilitar o desenvolvimento com a plataforma Java-Flex</description>
+  
+  <groupId>org.commonsLibs</groupId>
+  <artifactId>CommonsLibs-Parent</artifactId>
+  <version>1.7-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <properties>
+        <flex.framework.version>4.6.b.23201</flex.framework.version>
+        <flexmojos.version>3.8</flexmojos.version>
+    
+        <graniteds.version>2.3.0.GA</graniteds.version>
+    
+        <springframework.version>3.1.2.RELEASE</springframework.version>
+        <springframework.flex.version>1.5.2.RELEASE</springframework.flex.version>
+    
+        <hibernate.version>3.6.9.Final</hibernate.version>
+        <hibernate.validator.version>3.6.9.Final</hibernate.validator.version>
+    </properties>
+  
+      <repositories>
+        <!-- Repository for flex mojos libs -->
+        <repository>
+            <id>flex-mojos-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+			<id>SpringFlex</id>
+			<name>SpringFlex Source Repo</name>
+			<url>https://src.springsource.org/svn/spring-flex/tags/spring-flex-1.5.0.RELEASE/local-repo/</url>
+		</repository>
+    </repositories>
+    
+    <pluginRepositories>
+        <!-- Repository for flex mojos plugin -->
+        <pluginRepository>
+            <id>flex-mojos-plugin-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+            <releases> 
+                <enabled>true</enabled>
+            </releases>
+            <snapshots> 
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+  
+  
+    <modules>
+    	<module>components</module>
+    	<module>generics</module>
+    	<module>reflection</module>
+    	<module>reports</module>
+    	<module>security</module>
+    </modules>
+</project>
