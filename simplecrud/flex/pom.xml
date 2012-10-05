@@ -1,12 +1,70 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>CommonsLibs-SimpleCrud</artifactId>
-    <groupId>org.commonsLibs</groupId>
-    <version>1.7-SNAPSHOT</version>
-  </parent>
-  <groupId>org.commonsLibs</groupId>
-  <artifactId>CommonsLibs-SimpleCrud-Flex</artifactId>
-  <version>1.7-SNAPSHOT</version>
-  <packaging>pom</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>CommonsLibs-SimpleCrud</artifactId>
+		<groupId>org.commonsLibs</groupId>
+		<version>1.7-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>CommonsLibs-SimpleCrud-Flex</artifactId>
+
+	<packaging>swc</packaging>
+
+	<build>
+		<sourceDirectory>src/main/flex</sourceDirectory>
+		<testSourceDirectory>src/test/flex</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>net.flexmojos.oss</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<namespaces>
+						<namespace>
+							<uri>http://www.commonsLibs.org/flex/cl</uri>
+							<manifest>src/main/resources/manifest.xml</manifest>
+						</namespace>
+					</namespaces>
+					<includeNamespaces>
+						<namespace>http://www.commonsLibs.org/flex/cl</namespace>
+					</includeNamespaces>
+					<runtimeLocales>
+						<locale>en_US</locale>
+					</runtimeLocales>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.flexmojos.oss</groupId>
+										<artifactId>flexmojos-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>test-compile</goal>
+											<goal>compile-swc</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
 </project>

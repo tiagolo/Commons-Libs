@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<componentPackage>
+
+	<component id="ObjectTranslator" 		class="org.commonsLibs.utils.ObjectTranslator"/>
+	<component id="SQLUtil" 				class="org.commonsLibs.utils.SQLUtil"/>
+	<component id="StringUtil" 				class="org.commonsLibs.utils.StringUtil"/>
+	<component id="PagedList" 				class="org.commonsLibs.collections.PagedList"/>
+
+</componentPackage>

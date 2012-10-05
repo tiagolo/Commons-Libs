@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>CommonsLibs-Core-Flex</artifactId>
+	<packaging>swc</packaging>
+
+	<parent>
+		<groupId>org.commonsLibs</groupId>
+		<artifactId>CommonsLibs-Parent</artifactId>
+		<version>1.7-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>air-framework</artifactId>
+			<version>${flex.sdk.version}</version>
+			<type>pom</type>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.sdk.version}</version>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/flex</sourceDirectory>
+		<testSourceDirectory>src/test/flex</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>net.flexmojos.oss</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<configuration>
+					<includeClasses>
+						<include>org.commonsLibs.core.cl_internal</include>
+					</includeClasses>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	
+
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<componentPackage>
+
+	<component id="ViewStack" 				class="org.commonsLibs.containers.ViewStack"/>
+	<component id="DataGrid"	 			class="org.commonsLibs.controls.DataGrid"/>
+	<component id="SparkDataGrid"	 		class="org.commonsLibs.controls.SparkDataGrid"/>
+	<component id="List" 					class="org.commonsLibs.controls.List"/>
+	<component id="MaskedTextInput" 		class="org.commonsLibs.controls.MaskedTextInput"/>
+	<component id="MTISkin" 				class="org.commonsLibs.controls.maskedTextInputClasses.MTISkin"/>
+	<component id="TabManager" 				class="org.commonsLibs.managers.TabManager"/>
+	<component id="DateRenderer" 			class="org.commonsLibs.renderers.DateRenderer"/>
+	<component id="CheckBoxRenderer" 		class="org.commonsLibs.renderers.CheckBoxRenderer"/>
+	<component id="EncryptionKeyGenerator"	class="org.commonsLibs.security.EncryptionKeyGenerator"/>
+
+</componentPackage>
