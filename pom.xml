@@ -25,6 +25,12 @@
 		<hibernate.validator.version>3.6.9.Final</hibernate.validator.version>
 	</properties>
 
+	<scm>
+		<connection>scm:svn:http://subversion.assembla.com/svn/commonsLibs/</connection>
+		<developerConnection>scm:svn:http://subversion.assembla.com/svn/commonsLibs/</developerConnection>
+		<url>http://subversion.assembla.com/svn/commonsLibs/maven/</url>
+	</scm>
+
 	<modules>
 		<module>core/flex</module>
 		<module>components</module>
@@ -51,10 +57,6 @@
 					<includeNamespaces>
 						<namespace>http://www.commonsLibs.org/flex/cl</namespace>
 					</includeNamespaces>
-					<includeFiles>
-						<include>manifest.xml</include>
-						<include>design.xml</include>
-					</includeFiles>
 					<headlessServer>true</headlessServer>
 				</configuration>
 			</plugin>
@@ -80,7 +82,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -130,5 +132,16 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<distributionManagement>
+		<site>
+			<id>filedist</id>
+			<url>file:///Users/tiagolo/Sites/CommonsLibs/maven/site/</url>
+		</site>
+		<repository>
+			<id>filedist</id>
+			<url>file:///Users/tiagolo/Sites/CommonsLibs/maven/repository/</url>
+		</repository>
+	</distributionManagement>
 
 </project>

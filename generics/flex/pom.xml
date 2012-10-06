@@ -12,6 +12,7 @@
   
   <modules>
   	<module>swiz</module>
+  	<module>mate</module>
   </modules>
   
 </project>
