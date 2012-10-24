@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="CommonsLibs-SimpleCrud-Flex.as" projectUUID="a5d82e49-49ea-442a-a65e-3e229c8fd2c5" version="10">
+<actionScriptProperties analytics="false" mainApplicationPath="CommonsLibs-Security-Flex.as" projectUUID="ea2a883f-eeb3-4deb-b68b-e2db5c267cd5" version="10">
   <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="target/bin" removeUnusedRSL="true" sourceFolderPath="src/main/flex" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="src/main/resources"/>
@@ -15,7 +15,7 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="CommonsLibs-SimpleCrud-Flex.as"/>
+    <application path="CommonsLibs-Security-Flex.as"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
