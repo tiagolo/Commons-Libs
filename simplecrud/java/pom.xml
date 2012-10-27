@@ -8,4 +8,13 @@
     <groupId>org.commonsLibs</groupId>
     <version>1.7-SNAPSHOT</version>
   </parent>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>${project.groupId}</groupId>
+  		<artifactId>CommonsLibs-Generics-Java-SpringHibernate</artifactId>
+  		<version>${project.version}</version>
+  	</dependency>
+  </dependencies>
+  
 </project>

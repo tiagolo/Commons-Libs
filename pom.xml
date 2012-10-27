@@ -7,7 +7,7 @@
 	<description>Conjunto de bibliotecas para facilitar o desenvolvimento com a plataforma Java-Flex</description>
 
 	<groupId>org.commonsLibs</groupId>
-	<artifactId>CommonsLibs-Parent</artifactId>
+	<artifactId>CommonsLibs</artifactId>
 	<version>1.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
