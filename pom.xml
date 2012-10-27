@@ -138,6 +138,23 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+<scm>
+    <connection>scm:git:git@github.com:tiagolo/Commons-Libs.git</connection>
+    <developerConnection>scm:git:git@github.com:tiagolo/Commons-Libs.git</developerConnection>
+    <url>https://github.com/tiagolo/Commons-Libs</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/tiagolo/Commons-Libs/issues</url>
+  </issueManagement>
+
+  <ciManagement>
+    <system>Cloudbees BuildHive</system>
+    <url>https://buildhive.cloudbees.com/job/tiagolo/job/Commons-Libs/</url>
+  </ciManagement>
+
 	<distributionManagement>
 		<site>
 			<id>filedist</id>
