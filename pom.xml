@@ -26,6 +26,20 @@
 		<hibernate.validator.version>3.6.9.Final</hibernate.validator.version>
 	</properties>
 
+	<developers>
+		<developer>
+			<id>tiagolo</id>
+			<name>Tiago Lopes da Costa</name>
+			<email>tiagolo@gmail.com</email>
+			<url>http://www.tiagolopes.pro.br</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-3</timezone>
+		</developer>
+	</developers>
+
 	<scm>
 		<connection>scm:git:git@github.com:tiagolo/Commons-Libs.git</connection>
 		<developerConnection>scm:git:git@github.com:tiagolo/Commons-Libs.git</developerConnection>
