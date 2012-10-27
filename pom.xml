@@ -35,6 +35,7 @@
 			<roles>
 				<role>architect</role>
 				<role>developer</role>
+				<role>tester</role>
 			</roles>
 			<timezone>-3</timezone>
 		</developer>
