@@ -6,7 +6,7 @@
   <packaging>pom</packaging>
   
   <parent>
-    <artifactId>CommonsLibs-Parent</artifactId>
+    <artifactId>CommonsLibs</artifactId>
     <groupId>org.commonsLibs</groupId>
     <version>1.7-SNAPSHOT</version>
   </parent>
