@@ -1,3 +1,21 @@
-.DS_Store
-target
-**/target/**/*
+# Project build and release directories
+target/
+bin/
+bin-debug/
+bin-release/
+
+# Intellij IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Maven release plugin files
+pom.xml.releaseBackup
+release.properties
+
+# mvn site:stage bug
+home/
+
+# Mac OS
+*.DS_Store
