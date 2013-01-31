@@ -68,7 +68,7 @@ package org.commonsLibs.swiz.business
 		[Mediate(event = "AlertEvent.CONFIRM", properties = "mensagem,titulo,closeHandler")]
 		public function showConfirmaAlert(mensagem:String, titulo:String, closeHandler:Function):void
 		{
-			showAlert(mensagem, titulo, Alert.YES | Alert.NO, null, closeHandler
+			showAlert(mensagem, titulo, Alert.YES | Alert.NO, null, closeHandler);
 		}
 
 		[Mediate(event = "AlertEvent.ERROR", properties = "mensagem")]
