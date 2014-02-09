@@ -1,19 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<artifactId>CommonsLibs-SimpleCrud-Flex</artifactId>
-	<packaging>swc</packaging>
+    <artifactId>CommonsLibs-SimpleCrud-Flex</artifactId>
+    <packaging>swc</packaging>
 
-	<parent>
-		<artifactId>CommonsLibs-SimpleCrud</artifactId>
-		<groupId>org.commonsLibs</groupId>
-		<version>1.7-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <artifactId>CommonsLibs-SimpleCrud</artifactId>
+        <groupId>org.commonsLibs</groupId>
+        <version>1.7-SNAPSHOT</version>
+    </parent>
 
-	<build>
-		<sourceDirectory>src/main/flex</sourceDirectory>
-		<testSourceDirectory>src/test/flex</testSourceDirectory>
-	</build>
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        <testSourceDirectory>src/test/flex</testSourceDirectory>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.adobe.flash.framework</groupId>
+            <artifactId>playerglobal</artifactId>
+            <version>12.0</version>
+            <type>swc</type>
+        </dependency>
+    </dependencies>
 
 </project>

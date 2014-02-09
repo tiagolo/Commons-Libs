@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<design version="2">
+
+	<namespaces>
+		<namespace prefix="cl" uri="http://www.commonsLibs.org/flex/cl" />
+	</namespaces>
+
+	<categories>
+		<category id="CommonsLibs"	label="CommonsLibs" defaultExpand="true"/>
+	</categories>
+
+</design>

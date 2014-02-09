@@ -1,0 +1,6 @@
+<?xml version="1.0"?> 
+<componentPackage> 
+    <component id="Column"        class="org.commonsLibs.crud.models.Column"/>
+    <component id="Entity"        class="org.commonsLibs.crud.models.Entity"/>
+    <component id="Relationship"        class="org.commonsLibs.crud.models.Relationship"/>
+</componentPackage>
