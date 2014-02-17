@@ -17,6 +17,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>com.adobe.flexbuilder.project.aslibnature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>com.adobe.flexbuilder.project.flexlibnature</nature>
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>

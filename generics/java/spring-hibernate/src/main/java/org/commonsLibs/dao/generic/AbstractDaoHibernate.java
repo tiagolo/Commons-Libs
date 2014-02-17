@@ -157,6 +157,7 @@ public abstract class AbstractDaoHibernate extends HibernateDaoSupport implement
         setSessionFactory(sessionFactory);
     }
 	
+	@SuppressWarnings("deprecation")
 	protected <T> Criteria createCriteria(T entity, String[] properties) throws Exception
 	{
 		Criteria criteria = getSession().createCriteria(entity.getClass());

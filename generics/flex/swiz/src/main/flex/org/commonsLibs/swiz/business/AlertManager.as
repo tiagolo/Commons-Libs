@@ -2,17 +2,11 @@ package org.commonsLibs.swiz.business
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.IEventDispatcher;
 	import flash.events.UncaughtErrorEvent;
 	import flash.events.UncaughtErrorEvents;
-	import flash.system.System;
+	
 	import mx.controls.Alert;
-	import mx.core.FlexGlobals;
-	import mx.core.FlexLoader;
-	import mx.core.mx_internal;
-	import mx.managers.ISystemManager;
 	import mx.managers.SystemManager;
-	import mx.messaging.FlexClient;
 
 	public class AlertManager
 	{
@@ -65,25 +59,25 @@ package org.commonsLibs.swiz.business
 			Alert.noLabel = "Não";
 		}
 
-		[Mediate(event = "AlertEvent.CONFIRM", properties = "mensagem,titulo,closeHandler")]
+		[EventHandler(event = "AlertEvent.CONFIRM", properties = "mensagem,titulo,closeHandler")]
 		public function showConfirmaAlert(mensagem:String, titulo:String, closeHandler:Function):void
 		{
 			showAlert(mensagem, titulo, Alert.YES | Alert.NO, null, closeHandler);
 		}
 
-		[Mediate(event = "AlertEvent.ERROR", properties = "mensagem")]
+		[EventHandler(event = "AlertEvent.ERROR", properties = "mensagem")]
 		public function showError(mensagem:String):void
 		{
 			showAlert(mensagem, "Mensagem");
 		}
 
-		[Mediate(event = "AlertEvent.SELECTION_ERROR")]
+		[EventHandler(event = "AlertEvent.SELECTION_ERROR")]
 		public function showSelectionAlert():void
 		{
 			showAlert("Por favor selecione um item para efetuar esta ação", "Mensagem");
 		}
 
-		[Mediate(event = "AlertEvent.SUCCESS")]
+		[EventHandler(event = "AlertEvent.SUCCESS")]
 		public function showSuccess():void
 		{
 			showAlert("Operação realizada com sucesso", "Sucesso")

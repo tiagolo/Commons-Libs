@@ -17,6 +17,7 @@ public abstract class GenericDaoHibernate<T> extends AbstractDaoHibernate implem
 				.getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Session getSession(Boolean allowCreate)
 	{
 		return super.getSession(allowCreate);

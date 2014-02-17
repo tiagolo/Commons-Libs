@@ -3,7 +3,7 @@ package org.commonsLibs.services.generic;
 import java.io.Serializable;
 import java.util.List;
 
-public interface GenericService<T>
+public interface AbstractService<T>
 {
 	public Serializable count() throws Exception;
 	public Serializable count(T entity) throws Exception;

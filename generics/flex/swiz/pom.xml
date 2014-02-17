@@ -30,6 +30,31 @@
 	<build>
 		<sourceDirectory>src/main/flex</sourceDirectory>
 		<testSourceDirectory>src/test/flex</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>net.flexmojos.oss</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<configuration>
+					<keepAs3Metadatas>
+						<name>ExtentionEventHandler</name>
+					</keepAs3Metadatas>
+				</configuration>
+			</plugin>
+			<plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-resources-plugin</artifactId>
+            	<version>2.6</version>
+            	<executions>
+            		<execution>
+            			<phase>prepare-package</phase>
+            			<goals>
+            				<goal>resources</goal>
+            			</goals>
+            		</execution>
+            	</executions>
+            </plugin>
+		</plugins>
 	</build>
 
 </project>

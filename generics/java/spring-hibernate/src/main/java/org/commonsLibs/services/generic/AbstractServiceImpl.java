@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(propagation=Propagation.SUPPORTS,rollbackFor=Exception.class)
-public abstract class GenericServiceImpl<T,D extends GenericDao<T>> implements GenericService<T>
+public abstract class AbstractServiceImpl<T,D extends GenericDao<T>> implements AbstractService<T>
 {
 	public abstract D getDao();
 	
