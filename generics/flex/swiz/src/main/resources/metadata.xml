@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations version="1.0">
+	<metadata name="ExtentionEventHandler" description="Marks the event handler">
+		<context name="class" >
+			<attribute name="handler"
+					   type="String" 
+					   required="false" 
+					   description="The class handler for the event. " />
+		</context>
+		
+		<attribute name="event"
+				   type="String" 
+				   required="false" 
+				   description="The system event this method should handle. MyEvent.TYPE format is recommended but string value also supported." />
+		
+		<attribute name="scope" 
+				   type="String"
+				   values="global,local"
+				   defaultValue="global"
+				   required="false" 
+				   description="Instructs Swiz to create an event listener on the global (root) event bus or the one local to the containing Swiz instance (if there are multiple instances)" />
+		
+		<attribute name="properties"
+				   type="String" 
+				   required="false" 
+				   description="Comma separated list of public properties that should be pulled off of the event and passed to the decorated method." />
+		
+		<attribute name="priority"
+				   type="Number" 
+				   defaultValue="0" 
+				   required="false"
+				   description="Priority to use in the addEventListener call Swiz makes behind the scenes." />
+		
+		<attribute name="useCapture"
+				   type="Boolean"
+				   hint="boolean" 
+				   defaultValue="false" 
+				   required="false"
+				   description="Determines useCapture flag in the addEventListener call Swiz makes behind the scenes." />
+		
+		<attribute name="stopPropagation"
+				   type="Boolean"
+				   hint="boolean" 
+				   defaultValue="false" 
+				   required="false"
+				   description="If true, Swiz will call event.stopPropagation() after running the decorated method" />
+		
+		<attribute name="stopImmediatePropagation"
+				   type="Boolean"
+				   hint="boolean" 
+				   defaultValue="false" 
+				   required="false"
+				   description="If true, Swiz will call event.stopImmediatePropagation() after running the decorated method" />
+   
+	</metadata>
+	
+</annotations>
