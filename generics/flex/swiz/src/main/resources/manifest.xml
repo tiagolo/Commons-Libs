@@ -6,5 +6,6 @@
 	<component id="AlertEvent"		class="org.commonsLibs.swiz.events.AlertEvent"/>
 	<component id="GenericEvent"	class="org.commonsLibs.swiz.events.GenericEvent"/>
 	<component id="Param"			class="org.commonsLibs.swiz.model.Param"/>
+	<component id="ExtentionEventHandlerProcessor"		class="org.commonsLibs.swiz.processors.ExtentionEventHandlerProcessor"/>
 
 </componentPackage>
