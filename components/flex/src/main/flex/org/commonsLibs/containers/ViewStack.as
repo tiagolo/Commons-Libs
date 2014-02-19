@@ -29,7 +29,9 @@ package org.commonsLibs.containers
 		[Bindable]
 		public function get selectedChildByName():String
 		{
+			if(selectedChild)
 			return selectedChild.name
+			return null;
 		}
 		
 		public function set selectedChildByName(value:String):void
