@@ -10,7 +10,7 @@ package org.commonsLibs.swiz.business.abstract
 		function count(item:Object = null, properties:Array = null, validators:Array = null):AsyncToken;
 		function edit(item:Object):AsyncToken;
 		function find(item:Object = null, properties:Array = null, validators:Array = null, isPaged:Boolean = true):AsyncToken;
-		function findById(itemId:int):AsyncToken;
+		function findById(itemId:int, target:Object = null, property:String = null):AsyncToken;
 		function merge(item:Object, validators:Array):AsyncToken;
 		function remove(item:Object):AsyncToken;
 		function saveOrUpdate(item:Object,validators:Array):AsyncToken;

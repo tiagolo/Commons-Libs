@@ -197,10 +197,14 @@ package org.commonsLibs.swiz.business
 			return token;
 		}
 
-		public function findById(itemId:int):AsyncToken
+		public function findById(itemId:int,target:Object = null, property:String = null):AsyncToken
 		{
-			var token:AsyncToken = service.findById(itemId);
-			token.addResponder(new ItemResponder(findById_resultHandler, faultHandler, token));
+			if(!target && !property && !target.hasOwnProperty(property)){
+				target = this;
+				property = "item";
+			}
+			
+			var token:AsyncToken = serviceHelper.executeServiceCall(service.findById(itemId),findById_resultHandler, emptyHandler, [target,property]);
 			return token;
 		}
 
@@ -306,9 +310,12 @@ package org.commonsLibs.swiz.business
 			dispatcher.dispatchEvent(new AlertEvent(AlertEvent.ERROR, mensagem));
 		}
 
-		protected function findById_resultHandler(event:ResultEvent, token:Object = null):void
+		protected function findById_resultHandler(event:ResultEvent, target:Object, property:String):void
 		{
-			item = event.result;
+			if(target && property && target.hasOwnProperty(property))
+			{
+				target[property] = event.result;
+			}
 		}
 
 		protected function find_count_resultHandler(event:ResultEvent, target:Object, property:String):void
