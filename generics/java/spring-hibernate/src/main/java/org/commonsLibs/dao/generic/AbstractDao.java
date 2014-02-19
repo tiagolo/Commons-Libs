@@ -22,6 +22,7 @@ public interface AbstractDao {
 	
 	public <T> T merge(T entity);
 	public <T> Serializable save(T entity);
+	public <T> void saveOrUpdate(T entity);
 	public <T> void update(T entity);
 	public <T> void remove(T entity);
 	

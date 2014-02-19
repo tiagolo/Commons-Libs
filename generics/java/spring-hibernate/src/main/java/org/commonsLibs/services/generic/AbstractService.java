@@ -21,7 +21,8 @@ public interface AbstractService<T>
 	
 	public T merge(T entity);
 	public Serializable save(T entity);
+	public void saveOrUpdate(T entity);
 	public void update(T entity);
 	public void remove(T entity);
-
+	
 }

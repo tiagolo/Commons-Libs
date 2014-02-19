@@ -8,11 +8,11 @@ import org.springframework.flex.remoting.RemotingInclude;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(propagation=Propagation.SUPPORTS,rollbackFor=Exception.class)
-public abstract class AbstractServiceImpl<T,D extends GenericDao<T>> implements AbstractService<T>
-{
+@Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+public abstract class AbstractServiceImpl<T, D extends GenericDao<T>>
+		implements AbstractService<T> {
 	public abstract D getDao();
-	
+
 	@RemotingInclude
 	public Serializable count() throws Exception {
 		return getDao().count();
@@ -27,8 +27,6 @@ public abstract class AbstractServiceImpl<T,D extends GenericDao<T>> implements 
 	public Serializable count(T entity, String[] properties) throws Exception {
 		return getDao().count(entity, properties);
 	}
-
-
 
 	@RemotingInclude
 	public List<T> find() throws Exception {
@@ -63,7 +61,7 @@ public abstract class AbstractServiceImpl<T,D extends GenericDao<T>> implements 
 
 	@RemotingInclude
 	public T findById(Serializable id) {
-	    return getDao().findById(id);
+		return getDao().findById(id);
 	}
 
 	@RemotingInclude
@@ -71,33 +69,33 @@ public abstract class AbstractServiceImpl<T,D extends GenericDao<T>> implements 
 		return getDao().find(queryString);
 	}
 
-	
-
 	@RemotingInclude
-	@Transactional(propagation=Propagation.REQUIRED)
-	public T merge(T entity)
-	{
+	@Transactional(propagation = Propagation.REQUIRED)
+	public T merge(T entity) {
 		return getDao().merge(entity);
 	}
 
 	@RemotingInclude
-	@Transactional(propagation=Propagation.REQUIRED)
-	public Serializable save(T entity)
-	{
-	    return getDao().save(entity);
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Serializable save(T entity) {
+		return getDao().save(entity);
 	}
-	
+
 	@RemotingInclude
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void update(T entity)
-	{
-	    getDao().update(entity);
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void saveOrUpdate(T entity) {
+		getDao().saveOrUpdate(entity);
 	}
-	
+
 	@RemotingInclude
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void remove(T entity)
-	{
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void update(T entity) {
+		getDao().update(entity);
+	}
+
+	@RemotingInclude
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void remove(T entity) {
 		getDao().remove(entity);
 	}
 }

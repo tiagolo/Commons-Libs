@@ -13,6 +13,7 @@ package org.commonsLibs.swiz.business.abstract
 		function findById(itemId:int):AsyncToken;
 		function merge(item:Object, validators:Array):AsyncToken;
 		function remove(item:Object):AsyncToken;
+		function saveOrUpdate(item:Object,validators:Array):AsyncToken;
 		function save(item:Object, validators:Array):AsyncToken;
 		function update(item:Object, validators:Array):AsyncToken;
 	}

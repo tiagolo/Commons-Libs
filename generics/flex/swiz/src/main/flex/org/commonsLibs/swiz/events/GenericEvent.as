@@ -35,6 +35,8 @@ package org.commonsLibs.swiz.events
 		//--------------------------------------
 
 		public var currentState:String;
+		
+		public var property:String;
 
 		public var isPaged:Boolean;
 

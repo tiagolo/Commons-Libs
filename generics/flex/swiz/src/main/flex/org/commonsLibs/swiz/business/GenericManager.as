@@ -16,8 +16,8 @@ package org.commonsLibs.swiz.business
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 	
-	import org.commonsLibs.core.cl_internal;
 	import org.commonsLibs.collections.PagedList;
+	import org.commonsLibs.core.cl_internal;
 	import org.commonsLibs.swiz.business.abstract.AbstractManager;
 	import org.commonsLibs.swiz.business.abstract.IAsyncAbstractManager;
 	import org.commonsLibs.swiz.events.AlertEvent;
@@ -238,6 +238,17 @@ package org.commonsLibs.swiz.business
 			return token
 		}
 
+		public function saveOrUpdate(item:Object, validators:Array):AsyncToken
+		{
+			if (isValid(validators))
+			{
+				var token:AsyncToken = service.saveOrUpdate(item);
+				token.addResponder(new ItemResponder(update_resultHandler, faultHandler, token));
+				return token;
+			}
+			return null;
+		}
+		
 		public function save(item:Object, validators:Array):AsyncToken
 		{
 			if (isValid(validators))
@@ -333,8 +344,17 @@ package org.commonsLibs.swiz.business
 		{
 			var item:Object = searchObject.item;
 			var properties:Array = searchObject.properties;
-
-			serviceHelper.executeServiceCall(service.find(item, properties, startIndex, pageSize), find_paged_resultHandler, null, [list, startIndex, pageSize, length, target, property]);
+			
+			var token:AsyncToken;
+			
+			if (item && properties)
+				token = service.find(item, properties, startIndex, pageSize);
+			else if (item)
+				token = service.find(item, startIndex, pageSize);
+			else
+				token = service.find(startIndex, pageSize);
+			
+			serviceHelper.executeServiceCall(token, find_paged_resultHandler, null, [list, startIndex, pageSize, length, target, property]);
 		}
 
 		protected function pageList_getVector(value:IList):Vector.<Object>
