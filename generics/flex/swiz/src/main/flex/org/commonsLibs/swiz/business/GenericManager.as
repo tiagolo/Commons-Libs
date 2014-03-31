@@ -54,7 +54,7 @@ package org.commonsLibs.swiz.business
 		[Dispatcher]
 		public var dispatcher:IEventDispatcher;
 
-		public var item:Object;
+		public var data:Object;
 
 		public var service:AbstractService;
 
@@ -127,7 +127,7 @@ package org.commonsLibs.swiz.business
 
 		public function edit(item:Object):AsyncToken
 		{
-			this.item = item;
+			this.data = item;
 
 			if (item && item.id)
 			{
@@ -199,7 +199,7 @@ package org.commonsLibs.swiz.business
 
 		public function findById(itemId:int,target:Object = null, property:String = null):AsyncToken
 		{
-			if(!target && !property && !target.hasOwnProperty(property)){
+			if(!target || !property || !target.hasOwnProperty(property)){
 				target = this;
 				property = "item";
 			}
@@ -288,7 +288,7 @@ package org.commonsLibs.swiz.business
 		{
 			currentState = GenericEvent.EDIT_STATE;
 
-			item = event.result;
+			data = event.result;
 		}
 
 		protected function emptyHandler(event:Event = null, token:AsyncToken = null):void

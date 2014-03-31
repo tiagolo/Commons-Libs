@@ -34,6 +34,8 @@ package org.commonsLibs.swiz.events
 		//   Property 
 		//--------------------------------------
 
+		public var data:Object;
+		
 		public var currentState:String;
 		
 		public var property:String;
@@ -45,5 +47,6 @@ package org.commonsLibs.swiz.events
 		public var properties:Array;
 
 		public var validators:Array;
+
 	}
 }
