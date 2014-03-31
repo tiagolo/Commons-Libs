@@ -7,7 +7,7 @@
 
 	<parent>
 		<artifactId>CommonsLibs-Generics-Java</artifactId>
-		<groupId>org.commonsLibs</groupId>
+		<groupId>br.pro.tiagolopes</groupId>
 		<version>1.7-SNAPSHOT</version>
 	</parent>
 
@@ -38,4 +38,19 @@
 			<version>3.12.1.GA</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

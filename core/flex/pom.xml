@@ -6,7 +6,7 @@
 	<packaging>swc</packaging>
 
 	<parent>
-		<groupId>org.commonsLibs</groupId>
+		<groupId>br.pro.tiagolopes</groupId>
 		<artifactId>CommonsLibs</artifactId>
 		<version>1.7-SNAPSHOT</version>
 		<relativePath>../../</relativePath>
