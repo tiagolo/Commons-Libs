@@ -23,6 +23,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional(propagation=Propagation.SUPPORTS, rollbackFor=Exception.class)
 public abstract class AbstractDaoHibernate extends HibernateDaoSupport
 		implements AbstractDao {
 
@@ -174,7 +175,7 @@ public abstract class AbstractDaoHibernate extends HibernateDaoSupport
 				Object value = getValue(entity, propertyName);
 				if (value instanceof String) {
 					criteria.add(Property.forName(propertyName).like(
-							(String) value, MatchMode.ANYWHERE));
+							(String) value, MatchMode.START));
 				} else if (value != null && !"0".equals(value.toString())) {
 					criteria.add(Property.forName(propertyName).eq(value));
 				}
