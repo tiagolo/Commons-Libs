@@ -151,6 +151,9 @@ public abstract class AbstractDaoHibernate extends HibernateDaoSupport
 	@RemotingInclude
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public <T> void remove(T entity) {
+		getHibernateTemplate().refresh(entity);
+		getHibernateTemplate().flush();
+		getHibernateTemplate().clear();
 		getHibernateTemplate().delete(entity);
 	}
 

@@ -152,7 +152,15 @@ package org.commonsLibs.collections
 				dispatchEvent(ce);
 			}
 		}
-
+		
+		/**
+		 * Checks if an item is on the list.
+		 */
+		public function contains(item:Object):Boolean
+		{
+			return getItemIndex(item) > -1;
+		}
+		
 		public function failItemsAt(index:int, count:int):void
 		{
 			if (index < 0 || (index + count) > length)

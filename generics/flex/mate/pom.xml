@@ -9,12 +9,12 @@
 	<parent>
 		<artifactId>CommonsLibs-Generics-Flex</artifactId>
 		<groupId>br.pro.tiagolopes</groupId>
-		<version>1.7-SNAPSHOT</version>
+		<version>1.7.1-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.commonsLibs</groupId>
+			<groupId>br.pro.tiagolopes</groupId>
 			<artifactId>CommonsLibs-Core-Flex</artifactId>
 			<version>${project.version}</version>
 			<type>swc</type>

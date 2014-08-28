@@ -8,7 +8,7 @@
 	<parent>
 		<artifactId>CommonsLibs-Generics-Java</artifactId>
 		<groupId>br.pro.tiagolopes</groupId>
-		<version>1.7-SNAPSHOT</version>
+		<version>1.7.1-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>

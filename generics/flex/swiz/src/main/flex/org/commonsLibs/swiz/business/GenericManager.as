@@ -5,6 +5,7 @@ package org.commonsLibs.swiz.business
 	
 	import mx.collections.ArrayCollection;
 	import mx.collections.AsyncListView;
+	import mx.collections.ICollectionView;
 	import mx.collections.IList;
 	import mx.collections.ItemResponder;
 	import mx.collections.ListCollectionView;
@@ -201,7 +202,7 @@ package org.commonsLibs.swiz.business
 		{
 			if(!target || !property || !target.hasOwnProperty(property)){
 				target = this;
-				property = "item";
+				property = "data";
 			}
 			
 			var token:AsyncToken = serviceHelper.executeServiceCall(service.findById(itemId),findById_resultHandler, emptyHandler, [target,property]);
@@ -390,10 +391,12 @@ package org.commonsLibs.swiz.business
 
 		protected function remove_resultHandler(event:ResultEvent, token:Object):void
 		{
-			if (dataProvider is ListCollectionView && ListCollectionView(dataProvider).contains(token))
+			if ((dataProvider is ListCollectionView || dataProvider is AsyncListView) && dataProvider.getItemIndex(token) > -1)
 			{
-				ListCollectionView(dataProvider).removeItemAt(dataProvider.getItemIndex(token));
-				ListCollectionView(dataProvider).refresh();
+				dataProvider.removeItemAt(dataProvider.getItemIndex(token));
+				
+				if(dataProvider is ListCollectionView)
+					ListCollectionView(dataProvider).refresh();
 			}
 
 			dispatcher.dispatchEvent(new AlertEvent(AlertEvent.SUCCESS));
@@ -412,9 +415,10 @@ package org.commonsLibs.swiz.business
 					dataProvider = new ArrayCollection([event.result]);
 				}
 
-				dispatcher.dispatchEvent(new AlertEvent(AlertEvent.SUCCESS));
+				dispatcher.dispatchEvent(new AlertEvent(AlertEvent.SUCCESS,null,null,function(event:CloseEvent):void{
+					currentState = GenericEvent.LIST_STATE;
+				}));
 
-				currentState = GenericEvent.LIST_STATE;
 			}
 		}
 
@@ -424,9 +428,9 @@ package org.commonsLibs.swiz.business
 			{
 				find(searchObject.item, searchObject.properties, searchObject.validators, searchObject.isPaged);
 
-				dispatcher.dispatchEvent(new AlertEvent(AlertEvent.SUCCESS));
-
-				currentState = GenericEvent.LIST_STATE;
+				dispatcher.dispatchEvent(new AlertEvent(AlertEvent.SUCCESS,null,null,function(event:CloseEvent):void{
+					currentState = GenericEvent.LIST_STATE;
+				}));
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 package org.commonsLibs.swiz.events
 {
 	import flash.events.Event;
+	import flash.events.IEventDispatcher;
 
 	public class GenericEvent extends Event
 	{
@@ -47,6 +48,22 @@ package org.commonsLibs.swiz.events
 		public var properties:Array;
 
 		public var validators:Array;
+		
+		private var _dispatcher:IEventDispatcher;
+		
+		public function get dispatcher():IEventDispatcher
+		{
+			if(!_dispatcher && currentTarget && currentTarget is IEventDispatcher)
+			{
+				_dispatcher = currentTarget as IEventDispatcher;
+			}
+			
+			return _dispatcher;
+		}
+		
+		public function set dispatcher(value:IEventDispatcher):void {
+			_dispatcher = value;
+		}
 
 	}
 }

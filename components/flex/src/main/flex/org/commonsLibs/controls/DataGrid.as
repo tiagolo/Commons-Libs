@@ -116,8 +116,9 @@ package org.commonsLibs.controls
 			if (item && item is CheckBox)
 			{
 				CheckBox(item).invalidateProperties();
-				super.drawItem(item, selected, highlighted, caret, transition);
 			}
+			
+			super.drawItem(item, selected, highlighted, caret, transition);
 		}
 		
 		protected function excelFocusInHandler(event:FocusEvent):void

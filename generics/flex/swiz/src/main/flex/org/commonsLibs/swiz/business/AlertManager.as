@@ -77,10 +77,10 @@ package org.commonsLibs.swiz.business
 			showAlert("Por favor selecione um item para efetuar esta ação", "Mensagem");
 		}
 
-		[EventHandler(event = "AlertEvent.SUCCESS")]
-		public function showSuccess():void
+		[EventHandler(event = "AlertEvent.SUCCESS", properties="closeHandler")]
+		public function showSuccess(closeHandler:Function = null):void
 		{
-			showAlert("Operação realizada com sucesso", "Sucesso")
+			showAlert("Operação realizada com sucesso", "Sucesso",Alert.OK,null,closeHandler);
 		}
 
 		public function uncaughtErrorHandler(event:UncaughtErrorEvent):void
@@ -92,7 +92,8 @@ package org.commonsLibs.swiz.business
 
 		protected function showAlert(text:String = "", title:String = "", flags:uint = 0x4 /* Alert.OK */, parent:Sprite = null, closeHandler:Function = null, iconClass:Class = null, defaultButtonFlag:uint = 0x4 /* Alert.OK */):Alert
 		{
-			return Alert.show(text, title, flags, parent, closeHandler, iconClass, defaultButtonFlag);
+			var alert:Alert = Alert.show(text, title, flags, parent, closeHandler, iconClass, defaultButtonFlag);
+			return alert;
 		}
 	}
 }
