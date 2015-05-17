@@ -13,9 +13,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-
-		<air.version>4.0</air.version>
-		<flex.version>4.11.0.20131017</flex.version>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<air.version>15.0</air.version>
+		<flex.version>4.13.0.20140701</flex.version>
 		<flexmojos.version>6.0.1</flexmojos.version>
 		<graniteds.version>2.3.0.GA</graniteds.version>
 

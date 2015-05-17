@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.adobe.flash.framework</groupId>
             <artifactId>playerglobal</artifactId>
-            <version>12.0</version>
+            <version>15.0</version>
             <type>swc</type>
         </dependency>
     </dependencies>
