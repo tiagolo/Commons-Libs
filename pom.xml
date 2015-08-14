@@ -16,7 +16,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<air.version>15.0</air.version>
-		<flex.version>4.13.0.20140701</flex.version>
+		<flex.version>4.13.0</flex.version>
 		<flexmojos.version>6.0.1</flexmojos.version>
 		<graniteds.version>2.3.0.GA</graniteds.version>
 
@@ -100,7 +100,7 @@
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>com.adobe.flex</groupId>
+						<groupId>org.apache.flex</groupId>
 						<artifactId>compiler</artifactId>
 						<version>${flex.version}</version>
 						<type>pom</type>
@@ -145,24 +145,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-
-	<repositories>
-		<repository>
-			<id>commonsLibs</id>
-			<url>http://subversion.assembla.com/svn/commonsLibs/maven/repository/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>flex-mojos-repository</id>
-			<url>http://repository.sonatype.org/content/groups/flexgroup</url>
-		</repository>
-	</repositories>
 
 	<distributionManagement>
 		<site>
