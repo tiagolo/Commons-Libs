@@ -17,7 +17,7 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<air.version>15.0</air.version>
 		<flex.version>4.13.0</flex.version>
-		<flexmojos.version>6.0.1</flexmojos.version>
+		<flexmojos.version>7.0.1</flexmojos.version>
 		<graniteds.version>2.3.0.GA</graniteds.version>
 
 		<springframework.version>4.0.1.RELEASE</springframework.version>
@@ -60,13 +60,14 @@
 	</ciManagement>
 
 	<modules>
-		<module>core/flex</module>
+		<!--<module>core/flex</module>
 		<module>components</module>
-		<module>generics</module>
+		-->
+		<module>generics/java</module>
 		<!-- <module>reflection</module> -->
 		<!-- <module>reports</module> -->
 		<!-- <module>security</module> -->
-		<module>simplecrud</module>
+		<module>simplecrud/java</module>
 	</modules>
 
 	<build>
@@ -145,6 +146,17 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>LocalNeuxs</id>
+			<url>http://192.168.25.88:8081/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
 	<distributionManagement>
 		<site>
