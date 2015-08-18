@@ -4,7 +4,7 @@
 
 	<name>CommonsLibs</name>
 	<url>http://www.tiagolopes.pro.br/maven/site/</url>
-	<description>Conjunto de bibliotecas para facilitar o desenvolvimento com a plataforma Java-Flex</description>
+	<description>Conjunto de bibliotecas para facilitar o desenvolvimento com a plataforma Java-Flex.</description>
 
 	<groupId>br.pro.tiagolopes</groupId>
 	<artifactId>CommonsLibs</artifactId>
