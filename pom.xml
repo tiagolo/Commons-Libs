@@ -16,8 +16,8 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<air.version>15.0</air.version>
-		<flex.version>4.13.0</flex.version>
-		<flexmojos.version>7.0.1</flexmojos.version>
+		<flex.version>4.13.0.20140701</flex.version>
+		<flexmojos.version>6.0.1</flexmojos.version>
 		<graniteds.version>2.3.0.GA</graniteds.version>
 
 		<springframework.version>4.0.1.RELEASE</springframework.version>
@@ -60,14 +60,13 @@
 	</ciManagement>
 
 	<modules>
-		<!--<module>core/flex</module>
+		<module>core/flex</module>
 		<module>components</module>
-		-->
-		<module>generics/java</module>
+		<module>generics</module>
 		<!-- <module>reflection</module> -->
 		<!-- <module>reports</module> -->
 		<!-- <module>security</module> -->
-		<module>simplecrud/java</module>
+		<module>simplecrud</module>
 	</modules>
 
 	<build>
@@ -101,7 +100,7 @@
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>org.apache.flex</groupId>
+						<groupId>com.adobe.flex</groupId>
 						<artifactId>compiler</artifactId>
 						<version>${flex.version}</version>
 						<type>pom</type>
@@ -153,10 +152,27 @@
 			<url>http://192.168.25.88:8081/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
 			</releases>
-			<layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
 		</repository>
 	</repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>LocalNeuxs</id>
+            <url>http://192.168.25.88:8081/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<distributionManagement>
 		<site>

@@ -20,14 +20,14 @@
 			<type>pom</type>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.flex.framework.air</groupId>
-			<artifactId>airframework</artifactId>
+			<groupId>com.adobe.flex.framework.air</groupId>
+			<artifactId>air-framework</artifactId>
 			<version>${flex.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.flex.framework</groupId>
-			<artifactId>framework</artifactId>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
 			<version>${flex.version}</version>
 			<type>pom</type>
 		</dependency>
