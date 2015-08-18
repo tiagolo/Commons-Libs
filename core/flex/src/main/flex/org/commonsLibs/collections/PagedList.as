@@ -12,6 +12,7 @@ package org.commonsLibs.collections
 	import mx.resources.ResourceManager;
 	import mx.rpc.IResponder;
 
+	[ResourceBundle("collections")]
 	[Event(name = "collectionChange", type = "mx.events.CollectionEvent")]
 	/**
 	 *  An IList whose items are fetched asynchronously by a user provided function.   The

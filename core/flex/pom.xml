@@ -1,55 +1,62 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<artifactId>CommonsLibs-Core-Flex</artifactId>
-	<packaging>swc</packaging>
+    <name>CommonsLibs-Core-Flex</name>
+    <artifactId>CommonsLibs-Core-Flex</artifactId>
+    <packaging>swc</packaging>
 
-	<parent>
-		<groupId>br.pro.tiagolopes</groupId>
-		<artifactId>CommonsLibs</artifactId>
-		<version>1.7.1-SNAPSHOT</version>
-		<relativePath>../../</relativePath>
-	</parent>
+    <parent>
+        <groupId>br.pro.tiagolopes</groupId>
+        <artifactId>CommonsLibs</artifactId>
+        <version>1.7.1-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.adobe.air.framework</groupId>
-			<artifactId>common-framework</artifactId>
-			<version>${air.version}</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>com.adobe.flex.framework.air</groupId>
-			<artifactId>air-framework</artifactId>
-			<version>${flex.version}</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>com.adobe.flex.framework</groupId>
-			<artifactId>flex-framework</artifactId>
-			<version>${flex.version}</version>
-			<type>pom</type>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.adobe.air.framework</groupId>
+            <artifactId>common-framework</artifactId>
+            <version>${air.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework.air</groupId>
+            <artifactId>air-framework</artifactId>
+            <version>${flex.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<sourceDirectory>src/main/flex</sourceDirectory>
-		<testSourceDirectory>src/test/flex</testSourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>net.flexmojos.oss</groupId>
-				<artifactId>flexmojos-maven-plugin</artifactId>
-				<configuration>
-					<includeClasses>
-						<include>org.commonsLibs.core.cl_internal</include>
-					</includeClasses>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        <testSourceDirectory>src/test/flex</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>net.flexmojos.oss</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <configuration>
+                    <includeClasses>
+                        <include>org.commonsLibs.core.cl_internal</include>
+                    </includeClasses>
+                    <namespaces>
+                        <namespace>
+                            <uri>http://www.commonsLibs.org/flex/cl</uri>
+                            <manifest>${project.build.directory}/classes/manifest.xml</manifest>
+                        </namespace>
+                    </namespaces>
+                    <includeNamespaces>
+                        <namespace>http://www.commonsLibs.org/flex/cl</namespace>
+                    </includeNamespaces>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-
-
-	<name>CommonsLibs-Core-Flex</name>
 </project>
